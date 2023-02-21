@@ -1,8 +1,10 @@
 type Transaction @entity {
   # txn hash
   id: ID!
+
   # block txn was included in
   blockNumber: BigInt!
+
   # timestamp txn was confirmed
   timestamp: BigInt!
   gasPrice: BigInt!
@@ -29,7 +31,6 @@ type BondCreatedEvent @entity {
   npmToVest: BigInt!
   unlockDate: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -44,7 +45,6 @@ type BondPoolSetupEvent @entity {
   vestingTerm: BigInt!
   npmToTopUpNow: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -58,7 +58,6 @@ type BlacklistSetEvent @entity {
   account: Bytes!
   status: Boolean!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -70,7 +69,6 @@ type ClaimPeriodSetEvent @entity {
   previous: BigInt!
   current: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -89,7 +87,6 @@ type ClaimedEvent @entity {
   platformFee: BigInt!
   claimed: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -104,7 +101,6 @@ type CoverCreatedEvent @entity {
   supportsProducts: Boolean!
   requiresWhitelist: Boolean!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -115,7 +111,6 @@ type CoverCreationFeeSetEvent @entity {
   previous: BigInt!
   current: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -126,7 +121,6 @@ type CoverCreatorWhitelistUpdatedEvent @entity {
   account: Bytes!
   status: Boolean!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -137,7 +131,6 @@ type CoverInitializedEvent @entity {
   stablecoin: Bytes!
   withName: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -148,7 +141,6 @@ type CoverUpdatedEvent @entity {
   coverKey: Bytes!
   info: String!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -161,7 +153,6 @@ type CoverUserWhitelistUpdatedEvent @entity {
   account: Bytes!
   status: Boolean!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -172,7 +163,6 @@ type MinCoverCreationStakeSetEvent @entity {
   previous: BigInt!
   current: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -183,7 +173,6 @@ type MinStakeToAddLiquiditySetEvent @entity {
   previous: BigInt!
   current: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -195,7 +184,6 @@ type ProductCreatedEvent @entity {
   productKey: Bytes!
   info: String!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -209,7 +197,6 @@ type ProductStateUpdatedEvent @entity {
   status: Boolean!
   reason: String!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -221,7 +208,6 @@ type ProductUpdatedEvent @entity {
   productKey: Bytes!
   info: String!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -234,7 +220,6 @@ type PoolCapitalizedEvent @entity {
   incidentDate: BigInt!
   amount: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -246,7 +231,6 @@ type ReassuranceAddedEvent @entity {
   onBehalfOf: Bytes!
   amount: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -257,7 +241,6 @@ type WeightSetEvent @entity {
   coverKey: Bytes!
   weight: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -268,7 +251,6 @@ type FeeBurnedEvent @entity {
   coverKey: Bytes!
   amount: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -280,7 +262,6 @@ type StakeAddedEvent @entity {
   account: Bytes!
   amount: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -292,7 +273,6 @@ type StakeRemovedEvent @entity {
   account: Bytes!
   amount: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -307,7 +287,6 @@ type CxTokenDeployedEvent @entity {
   tokenName: String!
   expiryDate: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -321,7 +300,6 @@ type AttestedEvent @entity {
   incidentDate: BigInt!
   stake: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -336,7 +314,6 @@ type DisputedEvent @entity {
   info: String!
   initialStake: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -348,7 +325,6 @@ type FirstReportingStakeSetEvent @entity {
   previous: BigInt!
   current: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -362,7 +338,6 @@ type RefutedEvent @entity {
   incidentDate: BigInt!
   stake: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -378,7 +353,6 @@ type ReportedEvent @entity {
   initialStake: BigInt!
   resolutionTimestamp: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -389,7 +363,6 @@ type ReporterCommissionSetEvent @entity {
   previous: BigInt!
   current: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -400,7 +373,6 @@ type ReportingBurnRateSetEvent @entity {
   previous: BigInt!
   current: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -410,7 +382,6 @@ type LiquidityStateUpdateIntervalSetEvent @entity {
 
   duration: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -420,7 +391,6 @@ type MaxLendingRatioSetEvent @entity {
 
   ratio: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -432,7 +402,6 @@ type RiskPoolingPeriodSetEvent @entity {
   lendingPeriod: BigInt!
   withdrawalWindow: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -442,7 +411,6 @@ type StrategyAddedEvent @entity {
 
   strategy: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -452,7 +420,6 @@ type StrategyDeletedEvent @entity {
 
   strategy: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -462,7 +429,6 @@ type StrategyDisabledEvent @entity {
 
   strategy: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -482,7 +448,6 @@ type CoverPurchasedEvent @entity {
   expiresOn: BigInt!
   policyId: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -494,7 +459,6 @@ type CoverPolicyRateSetEvent @entity {
   floor: BigInt!
   ceiling: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -505,7 +469,6 @@ type CoverageLagSetEvent @entity {
   coverKey: Bytes!
   window: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -517,7 +480,6 @@ type ContractAddedEvent @entity {
   key: Bytes!
   contractAddress: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -530,7 +492,6 @@ type ContractUpgradedEvent @entity {
   previous: Bytes!
   current: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -563,7 +524,6 @@ type InitializedEvent @entity {
   policyFloor: BigInt!
   policyCeiling: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -573,7 +533,6 @@ type MemberAddedEvent @entity {
 
   member: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -583,7 +542,6 @@ type MemberRemovedEvent @entity {
 
   member: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -595,7 +553,6 @@ type RoleAdminChangedEvent @entity {
   previousAdminRole: Bytes!
   newAdminRole: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -607,7 +564,6 @@ type RoleGrantedEvent @entity {
   account: Bytes!
   sender: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -619,7 +575,6 @@ type RoleRevokedEvent @entity {
   account: Bytes!
   sender: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -630,7 +585,6 @@ type CooldownPeriodConfiguredEvent @entity {
   coverKey: Bytes!
   period: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -643,7 +597,6 @@ type FinalizedEvent @entity {
   finalizer: Bytes!
   incidentDate: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -658,7 +611,6 @@ type GovernanceBurnedEvent @entity {
   originalReward: BigInt!
   burnedAmount: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -671,7 +623,6 @@ type ReportClosedEvent @entity {
   closedBy: Bytes!
   incidentDate: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -686,7 +637,6 @@ type ReporterRewardDistributedEvent @entity {
   originalReward: BigInt!
   reporterReward: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -703,7 +653,6 @@ type ResolvedEvent @entity {
   claimBeginsFrom: BigInt!
   claimExpiresAt: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -717,7 +666,6 @@ type UnstakenEvent @entity {
   originalStake: BigInt!
   reward: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -730,7 +678,6 @@ type DepositedEvent @entity {
   token: Bytes!
   amount: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -741,7 +688,6 @@ type PoolClosedEvent @entity {
   key: Bytes!
   name: String!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -764,7 +710,6 @@ type PoolUpdatedEvent @entity {
   lockupPeriod: BigInt!
   rewardTokenToDeposit: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -778,7 +723,6 @@ type RewardsWithdrawnEvent @entity {
   rewards: BigInt!
   platformFee: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -791,7 +735,6 @@ type WithdrawnEvent @entity {
   token: Bytes!
   amount: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -803,7 +746,6 @@ type PausersSetEvent @entity {
   accounts: [Bytes!]!
   statuses: [Boolean!]!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -815,7 +757,6 @@ type ApprovalEvent @entity {
   spender: Bytes!
   value: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -826,7 +767,6 @@ type EnteredEvent @entity {
   coverKey: Bytes!
   account: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -837,7 +777,6 @@ type ExitedEvent @entity {
   coverKey: Bytes!
   account: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -851,7 +790,6 @@ type FlashLoanBorrowedEvent @entity {
   amount: BigInt!
   fee: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -862,7 +800,6 @@ type GovernanceTransferEvent @entity {
   to: Bytes!
   amount: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -872,7 +809,6 @@ type InterestAccruedEvent @entity {
 
   coverKey: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -883,7 +819,6 @@ type NpmStakenEvent @entity {
   account: Bytes!
   amount: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -894,7 +829,6 @@ type NpmUnstakenEvent @entity {
   account: Bytes!
   amount: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -907,7 +841,6 @@ type PodsIssuedEvent @entity {
   liquidityAdded: BigInt!
   referralCode: Bytes!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -919,7 +852,6 @@ type PodsRedeemedEvent @entity {
   redeemed: BigInt!
   liquidityReleased: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -934,7 +866,6 @@ type StrategyReceiptEvent @entity {
   income: BigInt!
   loss: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -947,7 +878,6 @@ type StrategyTransferEvent @entity {
   name: Bytes!
   amount: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -959,7 +889,6 @@ type TransferEvent @entity {
   to: Bytes!
   value: BigInt!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
@@ -972,7 +901,6 @@ type VaultDeployedEvent @entity {
   name: String!
   symbol: String!
 
-  # creation stats
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
