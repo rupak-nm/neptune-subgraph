@@ -1,15 +1,3 @@
-type Transaction @entity {
-  # txn hash
-  id: ID!
-  # block txn was included in
-  blockNumber: BigInt!
-  # timestamp txn was confirmed
-  timestamp: BigInt!
-  gasPrice: BigInt!
-  gasUsed: BigInt!
-  from: Bytes! # address
-}
-
 type BondClaimedEvent @entity {
   id: ID!
 

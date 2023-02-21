@@ -1,16 +1,12 @@
-specVersion: 0.0.5
-schema:
-  file: ./schema.graphql
-dataSources:
 - kind: ethereum
   name: IBondPool
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: IBondPool
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/IBondPool.ts
     entities:
@@ -29,11 +25,11 @@ dataSources:
   name: IClaimsProcessor
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: IClaimsProcessor
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/IClaimsProcessor.ts
     entities:
@@ -52,11 +48,11 @@ dataSources:
   name: ICover
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: ICover
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/ICover.ts
     entities:
@@ -91,11 +87,11 @@ dataSources:
   name: ICoverReassurance
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: ICoverReassurance
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/ICoverReassurance.ts
     entities:
@@ -114,11 +110,11 @@ dataSources:
   name: ICoverStake
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: ICoverStake
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/ICoverStake.ts
     entities:
@@ -137,11 +133,11 @@ dataSources:
   name: ICxTokenFactory
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: ICxTokenFactory
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/ICxTokenFactory.ts
     entities:
@@ -156,11 +152,11 @@ dataSources:
   name: IGovernance
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: IGovernance
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/IGovernance.ts
     entities:
@@ -187,11 +183,11 @@ dataSources:
   name: ILiquidityEngine
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: ILiquidityEngine
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/ILiquidityEngine.ts
     entities:
@@ -216,11 +212,11 @@ dataSources:
   name: IPolicy
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: IPolicy
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/IPolicy.ts
     entities:
@@ -235,11 +231,11 @@ dataSources:
   name: IPolicyAdmin
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: IPolicyAdmin
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/IPolicyAdmin.ts
     entities:
@@ -256,11 +252,11 @@ dataSources:
   name: IProtocol
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: IProtocol
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/IProtocol.ts
     entities:
@@ -289,11 +285,11 @@ dataSources:
   name: IResolution
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: IResolution
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/IResolution.ts
     entities:
@@ -320,11 +316,11 @@ dataSources:
   name: IStakingPools
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: IStakingPools
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/IStakingPools.ts
     entities:
@@ -347,11 +343,11 @@ dataSources:
   name: IStore
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: IStore
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/IStore.ts
     entities:
@@ -366,11 +362,11 @@ dataSources:
   name: IVault
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: IVault
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/IVault.ts
     entities:
@@ -409,11 +405,11 @@ dataSources:
   name: IVaultFactory
   network: mainnet
   source:
-    address: "0xB452AC021a1151AAF342c1B75aA914E03e6503b5"
+    address: {NETWORK}
     abi: IVaultFactory
   mapping:
     kind: ethereum/events
-    apiVersion: 0.0.6
+    apiVersion: 0.0.5
     language: wasm/assemblyscript
     file: ./src/mappings/IVaultFactory.ts
     entities:
