@@ -698,7 +698,7 @@ type PoolUpdatedEvent @entity {
   key: Bytes!
   key: Bytes!
   name: String!
-  poolType: BigInt!
+  poolType: Int!
   stakingToken: Bytes!
   uniStakingTokenDollarPair: Bytes!
   rewardToken: Bytes!
