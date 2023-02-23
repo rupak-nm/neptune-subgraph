@@ -64,8 +64,6 @@ export function handlePoolUpdated(event: PoolUpdated): void {
 
   entity.key = event.params.key;
 
-  entity.key = event.params.args.key;
-
   entity.name = event.params.args.name;
 
   entity.poolType = event.params.args.poolType;

@@ -2,6 +2,7 @@ import { loadTransaction } from "../initializers/Transaction";
 
 import { PausersSet } from "../../generated/IStore/IStore";
 import { PausersSetEvent } from "../../generated/schema";
+import { Bytes } from "@graphprotocol/graph-ts";
 
 export function handlePausersSet(event: PausersSet): void {
   let entity = PausersSetEvent.load(event.transaction.hash.toString());
@@ -12,7 +13,7 @@ export function handlePausersSet(event: PausersSet): void {
 
   entity.addedBy = event.params.addedBy;
 
-  entity.accounts = event.params.accounts;
+  entity.accounts = changetype<Bytes[]>(event.params.accounts);
 
   entity.statuses = event.params.statuses;
 
