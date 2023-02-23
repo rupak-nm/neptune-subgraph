@@ -6,7 +6,7 @@ import {
   PoolUpdated,
   RewardsWithdrawn,
   Withdrawn,
-} from "../../generated/IStakingPools/IStakingPools";
+} from "../../generated/templates/IStakingPools/IStakingPools";
 import {
   DepositedEvent,
   PoolClosedEvent,
@@ -23,11 +23,8 @@ export function handleDeposited(event: Deposited): void {
   }
 
   entity.key = event.params.key;
-
   entity.account = event.params.account;
-
   entity.token = event.params.token;
-
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
@@ -45,7 +42,6 @@ export function handlePoolClosed(event: PoolClosed): void {
   }
 
   entity.key = event.params.key;
-
   entity.name = event.params.name;
 
   const tx = loadTransaction(event);
@@ -63,30 +59,18 @@ export function handlePoolUpdated(event: PoolUpdated): void {
   }
 
   entity.key = event.params.key;
-
   entity.name = event.params.args.name;
-
   entity.poolType = event.params.args.poolType;
-
   entity.stakingToken = event.params.args.stakingToken;
-
   entity.uniStakingTokenDollarPair =
     event.params.args.uniStakingTokenDollarPair;
-
   entity.rewardToken = event.params.args.rewardToken;
-
   entity.uniRewardTokenDollarPair = event.params.args.uniRewardTokenDollarPair;
-
   entity.stakingTarget = event.params.args.stakingTarget;
-
   entity.maxStake = event.params.args.maxStake;
-
   entity.platformFee = event.params.args.platformFee;
-
   entity.rewardPerBlock = event.params.args.rewardPerBlock;
-
   entity.lockupPeriod = event.params.args.lockupPeriod;
-
   entity.rewardTokenToDeposit = event.params.args.rewardTokenToDeposit;
 
   const tx = loadTransaction(event);
@@ -104,13 +88,9 @@ export function handleRewardsWithdrawn(event: RewardsWithdrawn): void {
   }
 
   entity.key = event.params.key;
-
   entity.account = event.params.account;
-
   entity.token = event.params.token;
-
   entity.rewards = event.params.rewards;
-
   entity.platformFee = event.params.platformFee;
 
   const tx = loadTransaction(event);
@@ -128,11 +108,8 @@ export function handleWithdrawn(event: Withdrawn): void {
   }
 
   entity.key = event.params.key;
-
   entity.account = event.params.account;
-
   entity.token = event.params.token;
-
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);

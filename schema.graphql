@@ -476,8 +476,8 @@ type CoverageLagSetEvent @entity {
 type ContractAddedEvent @entity {
   id: ID!
 
-  namespace: Bytes!
-  key: Bytes!
+  namespace: String!
+  key: String!
   contractAddress: Bytes!
 
   createdAtTimestamp: BigInt!
@@ -487,8 +487,8 @@ type ContractAddedEvent @entity {
 type ContractUpgradedEvent @entity {
   id: ID!
 
-  namespace: Bytes!
-  key: Bytes!
+  namespace: String!
+  key: String!
   previous: Bytes!
   current: Bytes!
 

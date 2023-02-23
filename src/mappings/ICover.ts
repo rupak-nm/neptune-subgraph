@@ -12,7 +12,7 @@ import {
   ProductCreated,
   ProductStateUpdated,
   ProductUpdated,
-} from "../../generated/ICover/ICover";
+} from "../../generated/templates/ICover/ICover";
 import {
   CoverCreatedEvent,
   CoverCreationFeeSetEvent,
@@ -35,15 +35,10 @@ export function handleCoverCreated(event: CoverCreated): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.info = event.params.info;
-
   entity.tokenName = event.params.tokenName;
-
   entity.tokenSymbol = event.params.tokenSymbol;
-
   entity.supportsProducts = event.params.supportsProducts;
-
   entity.requiresWhitelist = event.params.requiresWhitelist;
 
   const tx = loadTransaction(event);
@@ -61,7 +56,6 @@ export function handleCoverCreationFeeSet(event: CoverCreationFeeSet): void {
   }
 
   entity.previous = event.params.previous;
-
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);
@@ -85,7 +79,6 @@ export function handleCoverCreatorWhitelistUpdated(
   }
 
   entity.account = event.params.account;
-
   entity.status = event.params.status;
 
   const tx = loadTransaction(event);
@@ -103,7 +96,6 @@ export function handleCoverInitialized(event: CoverInitialized): void {
   }
 
   entity.stablecoin = event.params.stablecoin;
-
   entity.withName = event.params.withName;
 
   const tx = loadTransaction(event);
@@ -121,7 +113,6 @@ export function handleCoverUpdated(event: CoverUpdated): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.info = event.params.info;
 
   const tx = loadTransaction(event);
@@ -145,11 +136,8 @@ export function handleCoverUserWhitelistUpdated(
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.productKey = event.params.productKey;
-
   entity.account = event.params.account;
-
   entity.status = event.params.status;
 
   const tx = loadTransaction(event);
@@ -173,7 +161,6 @@ export function handleMinCoverCreationStakeSet(
   }
 
   entity.previous = event.params.previous;
-
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);
@@ -197,7 +184,6 @@ export function handleMinStakeToAddLiquiditySet(
   }
 
   entity.previous = event.params.previous;
-
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);
@@ -215,9 +201,7 @@ export function handleProductCreated(event: ProductCreated): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.productKey = event.params.productKey;
-
   entity.info = event.params.info;
 
   const tx = loadTransaction(event);
@@ -235,13 +219,9 @@ export function handleProductStateUpdated(event: ProductStateUpdated): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.productKey = event.params.productKey;
-
   entity.updatedBy = event.params.updatedBy;
-
   entity.status = event.params.status;
-
   entity.reason = event.params.reason;
 
   const tx = loadTransaction(event);
@@ -259,9 +239,7 @@ export function handleProductUpdated(event: ProductUpdated): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.productKey = event.params.productKey;
-
   entity.info = event.params.info;
 
   const tx = loadTransaction(event);

@@ -4,7 +4,7 @@ import {
   BlacklistSet,
   ClaimPeriodSet,
   Claimed,
-} from "../../generated/IClaimsProcessor/IClaimsProcessor";
+} from "../../generated/templates/IClaimsProcessor/IClaimsProcessor";
 import {
   BlacklistSetEvent,
   ClaimPeriodSetEvent,
@@ -19,13 +19,9 @@ export function handleBlacklistSet(event: BlacklistSet): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.productKey = event.params.productKey;
-
   entity.incidentDate = event.params.incidentDate;
-
   entity.account = event.params.account;
-
   entity.status = event.params.status;
 
   const tx = loadTransaction(event);
@@ -43,9 +39,7 @@ export function handleClaimPeriodSet(event: ClaimPeriodSet): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.previous = event.params.previous;
-
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);
@@ -63,23 +57,14 @@ export function handleClaimed(event: Claimed): void {
   }
 
   entity.cxToken = event.params.cxToken;
-
   entity.coverKey = event.params.coverKey;
-
   entity.productKey = event.params.productKey;
-
   entity.incidentDate = event.params.incidentDate;
-
   entity.account = event.params.account;
-
   entity.reporter = event.params.reporter;
-
   entity.amount = event.params.amount;
-
   entity.reporterFee = event.params.reporterFee;
-
   entity.platformFee = event.params.platformFee;
-
   entity.claimed = event.params.claimed;
 
   const tx = loadTransaction(event);

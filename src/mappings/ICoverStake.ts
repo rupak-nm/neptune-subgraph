@@ -4,7 +4,7 @@ import {
   FeeBurned,
   StakeAdded,
   StakeRemoved,
-} from "../../generated/ICoverStake/ICoverStake";
+} from "../../generated/templates/ICoverStake/ICoverStake";
 import {
   FeeBurnedEvent,
   StakeAddedEvent,
@@ -19,7 +19,6 @@ export function handleFeeBurned(event: FeeBurned): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
@@ -37,9 +36,7 @@ export function handleStakeAdded(event: StakeAdded): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.account = event.params.account;
-
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
@@ -57,9 +54,7 @@ export function handleStakeRemoved(event: StakeRemoved): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.account = event.params.account;
-
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);

@@ -7,7 +7,7 @@ import {
   StrategyAdded,
   StrategyDeleted,
   StrategyDisabled,
-} from "../../generated/ILiquidityEngine/ILiquidityEngine";
+} from "../../generated/templates/ILiquidityEngine/ILiquidityEngine";
 import {
   LiquidityStateUpdateIntervalSetEvent,
   MaxLendingRatioSetEvent,
@@ -65,9 +65,7 @@ export function handleRiskPoolingPeriodSet(event: RiskPoolingPeriodSet): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.lendingPeriod = event.params.lendingPeriod;
-
   entity.withdrawalWindow = event.params.withdrawalWindow;
 
   const tx = loadTransaction(event);

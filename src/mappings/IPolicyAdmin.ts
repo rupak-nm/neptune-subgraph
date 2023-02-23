@@ -3,7 +3,7 @@ import { loadTransaction } from "../initializers/Transaction";
 import {
   CoverPolicyRateSet,
   CoverageLagSet,
-} from "../../generated/IPolicyAdmin/IPolicyAdmin";
+} from "../../generated/templates/IPolicyAdmin/IPolicyAdmin";
 import {
   CoverPolicyRateSetEvent,
   CoverageLagSetEvent,
@@ -17,9 +17,7 @@ export function handleCoverPolicyRateSet(event: CoverPolicyRateSet): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.floor = event.params.floor;
-
   entity.ceiling = event.params.ceiling;
 
   const tx = loadTransaction(event);
@@ -37,7 +35,6 @@ export function handleCoverageLagSet(event: CoverageLagSet): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.window = event.params.window;
 
   const tx = loadTransaction(event);

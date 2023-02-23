@@ -14,7 +14,7 @@ import {
   StrategyReceipt,
   StrategyTransfer,
   Transfer,
-} from "../../generated/IVault/IVault";
+} from "../../generated/templates/IVault/IVault";
 import {
   ApprovalEvent,
   EnteredEvent,
@@ -39,9 +39,7 @@ export function handleApproval(event: Approval): void {
   }
 
   entity.owner = event.params.owner;
-
   entity.spender = event.params.spender;
-
   entity.value = event.params.value;
 
   const tx = loadTransaction(event);
@@ -59,7 +57,6 @@ export function handleEntered(event: Entered): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.account = event.params.account;
 
   const tx = loadTransaction(event);
@@ -77,7 +74,6 @@ export function handleExited(event: Exited): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.account = event.params.account;
 
   const tx = loadTransaction(event);
@@ -95,13 +91,9 @@ export function handleFlashLoanBorrowed(event: FlashLoanBorrowed): void {
   }
 
   entity.lender = event.params.lender;
-
   entity.borrower = event.params.borrower;
-
   entity.stablecoin = event.params.stablecoin;
-
   entity.amount = event.params.amount;
-
   entity.fee = event.params.fee;
 
   const tx = loadTransaction(event);
@@ -119,7 +111,6 @@ export function handleGovernanceTransfer(event: GovernanceTransfer): void {
   }
 
   entity.to = event.params.to;
-
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
@@ -153,7 +144,6 @@ export function handleNpmStaken(event: NpmStaken): void {
   }
 
   entity.account = event.params.account;
-
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
@@ -171,7 +161,6 @@ export function handleNpmUnstaken(event: NpmUnstaken): void {
   }
 
   entity.account = event.params.account;
-
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
@@ -189,11 +178,8 @@ export function handlePodsIssued(event: PodsIssued): void {
   }
 
   entity.account = event.params.account;
-
   entity.issued = event.params.issued;
-
   entity.liquidityAdded = event.params.liquidityAdded;
-
   entity.referralCode = event.params.referralCode;
 
   const tx = loadTransaction(event);
@@ -211,9 +197,7 @@ export function handlePodsRedeemed(event: PodsRedeemed): void {
   }
 
   entity.account = event.params.account;
-
   entity.redeemed = event.params.redeemed;
-
   entity.liquidityReleased = event.params.liquidityReleased;
 
   const tx = loadTransaction(event);
@@ -231,15 +215,10 @@ export function handleStrategyReceipt(event: StrategyReceipt): void {
   }
 
   entity.token = event.params.token;
-
   entity.strategy = event.params.strategy;
-
   entity.name = event.params.name;
-
   entity.amount = event.params.amount;
-
   entity.income = event.params.income;
-
   entity.loss = event.params.loss;
 
   const tx = loadTransaction(event);
@@ -257,11 +236,8 @@ export function handleStrategyTransfer(event: StrategyTransfer): void {
   }
 
   entity.token = event.params.token;
-
   entity.strategy = event.params.strategy;
-
   entity.name = event.params.name;
-
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
@@ -279,9 +255,7 @@ export function handleTransfer(event: Transfer): void {
   }
 
   entity.from = event.params.from;
-
   entity.to = event.params.to;
-
   entity.value = event.params.value;
 
   const tx = loadTransaction(event);

@@ -4,7 +4,7 @@ import {
   PoolCapitalized,
   ReassuranceAdded,
   WeightSet,
-} from "../../generated/ICoverReassurance/ICoverReassurance";
+} from "../../generated/templates/ICoverReassurance/ICoverReassurance";
 import {
   PoolCapitalizedEvent,
   ReassuranceAddedEvent,
@@ -19,11 +19,8 @@ export function handlePoolCapitalized(event: PoolCapitalized): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.productKey = event.params.productKey;
-
   entity.incidentDate = event.params.incidentDate;
-
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
@@ -41,9 +38,7 @@ export function handleReassuranceAdded(event: ReassuranceAdded): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.onBehalfOf = event.params.onBehalfOf;
-
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
@@ -61,7 +56,6 @@ export function handleWeightSet(event: WeightSet): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.weight = event.params.weight;
 
   const tx = loadTransaction(event);

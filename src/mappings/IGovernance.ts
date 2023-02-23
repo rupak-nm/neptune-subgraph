@@ -8,7 +8,7 @@ import {
   Reported,
   ReporterCommissionSet,
   ReportingBurnRateSet,
-} from "../../generated/IGovernance/IGovernance";
+} from "../../generated/templates/IGovernance/IGovernance";
 import {
   AttestedEvent,
   DisputedEvent,
@@ -27,13 +27,9 @@ export function handleAttested(event: Attested): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.productKey = event.params.productKey;
-
   entity.witness = event.params.witness;
-
   entity.incidentDate = event.params.incidentDate;
-
   entity.stake = event.params.stake;
 
   const tx = loadTransaction(event);
@@ -51,15 +47,10 @@ export function handleDisputed(event: Disputed): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.productKey = event.params.productKey;
-
   entity.reporter = event.params.reporter;
-
   entity.incidentDate = event.params.incidentDate;
-
   entity.info = event.params.info;
-
   entity.initialStake = event.params.initialStake;
 
   const tx = loadTransaction(event);
@@ -81,9 +72,7 @@ export function handleFirstReportingStakeSet(
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.previous = event.params.previous;
-
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);
@@ -101,13 +90,9 @@ export function handleRefuted(event: Refuted): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.productKey = event.params.productKey;
-
   entity.witness = event.params.witness;
-
   entity.incidentDate = event.params.incidentDate;
-
   entity.stake = event.params.stake;
 
   const tx = loadTransaction(event);
@@ -125,17 +110,11 @@ export function handleReported(event: Reported): void {
   }
 
   entity.coverKey = event.params.coverKey;
-
   entity.productKey = event.params.productKey;
-
   entity.reporter = event.params.reporter;
-
   entity.incidentDate = event.params.incidentDate;
-
   entity.info = event.params.info;
-
   entity.initialStake = event.params.initialStake;
-
   entity.resolutionTimestamp = event.params.resolutionTimestamp;
 
   const tx = loadTransaction(event);
@@ -157,7 +136,6 @@ export function handleReporterCommissionSet(
   }
 
   entity.previous = event.params.previous;
-
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);
@@ -177,7 +155,6 @@ export function handleReportingBurnRateSet(event: ReportingBurnRateSet): void {
   }
 
   entity.previous = event.params.previous;
-
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);

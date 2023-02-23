@@ -102,8 +102,8 @@ export function handleContractAdded(event: ContractAdded): void {
     entity = new ContractAddedEvent(event.transaction.hash.toString());
   }
 
-  entity.namespace = event.params.namespace;
-  entity.key = event.params.key;
+  entity.namespace = event.params.namespace.toString();
+  entity.key = event.params.key.toString();
   entity.contractAddress = event.params.contractAddress;
 
   createTemplate(event.params.namespace, event.params.contractAddress);
@@ -122,8 +122,8 @@ export function handleContractUpgraded(event: ContractUpgraded): void {
     entity = new ContractUpgradedEvent(event.transaction.hash.toString());
   }
 
-  entity.namespace = event.params.namespace;
-  entity.key = event.params.key;
+  entity.namespace = event.params.namespace.toString();
+  entity.key = event.params.key.toString();
   entity.previous = event.params.previous;
   entity.current = event.params.current;
 
