@@ -1,0 +1,7 @@
+{
+  "ProtocolAddress": "0x023AE81A423486491cF08BdCe9B848EdD7a19F7D",
+  "StartBlock": "0",
+  "Network": "fuji",
+
+  "deployAccount": "rupak-nm/neptune-subgraph"
+}

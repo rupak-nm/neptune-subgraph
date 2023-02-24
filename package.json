@@ -2,9 +2,9 @@
   "name": "neptune-subgraph",
   "license": "UNLICENSED",
   "scripts": {
-    "codegen": "graph codegen",
+    "codegen": "node scripts/codegen.js",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ rupak-nm/neptune-subgraph subgraph.yaml",
+    "deploy": "node scripts/deploy.js",
     "create-local": "graph create --node http://localhost:8020/ rupak-nm/neptune-subgraph",
     "remove-local": "graph remove --node http://localhost:8020/ rupak-nm/neptune-subgraph",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 rupak-nm/neptune-subgraph",
