@@ -96,10 +96,10 @@ function createTemplate(namespace: Bytes, address: Address): void {
 }
 
 export function handleContractAdded(event: ContractAdded): void {
-  let entity = ContractAddedEvent.load(event.transaction.hash.toString());
+  let entity = ContractAddedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new ContractAddedEvent(event.transaction.hash.toString());
+    entity = new ContractAddedEvent(event.transaction.hash.toHexString());
   }
 
   entity.namespace = event.params.namespace.toString();
@@ -116,10 +116,10 @@ export function handleContractAdded(event: ContractAdded): void {
 }
 
 export function handleContractUpgraded(event: ContractUpgraded): void {
-  let entity = ContractUpgradedEvent.load(event.transaction.hash.toString());
+  let entity = ContractUpgradedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new ContractUpgradedEvent(event.transaction.hash.toString());
+    entity = new ContractUpgradedEvent(event.transaction.hash.toHexString());
   }
 
   entity.namespace = event.params.namespace.toString();
@@ -137,10 +137,10 @@ export function handleContractUpgraded(event: ContractUpgraded): void {
 }
 
 export function handleInitialized(event: Initialized): void {
-  let entity = InitializedEvent.load(event.transaction.hash.toString());
+  let entity = InitializedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new InitializedEvent(event.transaction.hash.toString());
+    entity = new InitializedEvent(event.transaction.hash.toHexString());
   }
 
   entity.burner = event.params.args.burner;
@@ -177,10 +177,10 @@ export function handleInitialized(event: Initialized): void {
 }
 
 export function handleMemberAdded(event: MemberAdded): void {
-  let entity = MemberAddedEvent.load(event.transaction.hash.toString());
+  let entity = MemberAddedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new MemberAddedEvent(event.transaction.hash.toString());
+    entity = new MemberAddedEvent(event.transaction.hash.toHexString());
   }
 
   entity.member = event.params.member;
@@ -193,10 +193,10 @@ export function handleMemberAdded(event: MemberAdded): void {
 }
 
 export function handleMemberRemoved(event: MemberRemoved): void {
-  let entity = MemberRemovedEvent.load(event.transaction.hash.toString());
+  let entity = MemberRemovedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new MemberRemovedEvent(event.transaction.hash.toString());
+    entity = new MemberRemovedEvent(event.transaction.hash.toHexString());
   }
 
   entity.member = event.params.member;
@@ -209,10 +209,10 @@ export function handleMemberRemoved(event: MemberRemoved): void {
 }
 
 export function handleRoleAdminChanged(event: RoleAdminChanged): void {
-  let entity = RoleAdminChangedEvent.load(event.transaction.hash.toString());
+  let entity = RoleAdminChangedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new RoleAdminChangedEvent(event.transaction.hash.toString());
+    entity = new RoleAdminChangedEvent(event.transaction.hash.toHexString());
   }
 
   entity.role = event.params.role;
@@ -227,10 +227,10 @@ export function handleRoleAdminChanged(event: RoleAdminChanged): void {
 }
 
 export function handleRoleGranted(event: RoleGranted): void {
-  let entity = RoleGrantedEvent.load(event.transaction.hash.toString());
+  let entity = RoleGrantedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new RoleGrantedEvent(event.transaction.hash.toString());
+    entity = new RoleGrantedEvent(event.transaction.hash.toHexString());
   }
 
   entity.role = event.params.role;
@@ -245,10 +245,10 @@ export function handleRoleGranted(event: RoleGranted): void {
 }
 
 export function handleRoleRevoked(event: RoleRevoked): void {
-  let entity = RoleRevokedEvent.load(event.transaction.hash.toString());
+  let entity = RoleRevokedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new RoleRevokedEvent(event.transaction.hash.toString());
+    entity = new RoleRevokedEvent(event.transaction.hash.toHexString());
   }
 
   entity.role = event.params.role;

@@ -16,10 +16,10 @@ import {
 } from "../../generated/schema";
 
 export function handleDeposited(event: Deposited): void {
-  let entity = DepositedEvent.load(event.transaction.hash.toString());
+  let entity = DepositedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new DepositedEvent(event.transaction.hash.toString());
+    entity = new DepositedEvent(event.transaction.hash.toHexString());
   }
 
   entity.key = event.params.key;
@@ -35,10 +35,10 @@ export function handleDeposited(event: Deposited): void {
 }
 
 export function handlePoolClosed(event: PoolClosed): void {
-  let entity = PoolClosedEvent.load(event.transaction.hash.toString());
+  let entity = PoolClosedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new PoolClosedEvent(event.transaction.hash.toString());
+    entity = new PoolClosedEvent(event.transaction.hash.toHexString());
   }
 
   entity.key = event.params.key;
@@ -52,10 +52,10 @@ export function handlePoolClosed(event: PoolClosed): void {
 }
 
 export function handlePoolUpdated(event: PoolUpdated): void {
-  let entity = PoolUpdatedEvent.load(event.transaction.hash.toString());
+  let entity = PoolUpdatedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new PoolUpdatedEvent(event.transaction.hash.toString());
+    entity = new PoolUpdatedEvent(event.transaction.hash.toHexString());
   }
 
   entity.key = event.params.key;
@@ -81,10 +81,10 @@ export function handlePoolUpdated(event: PoolUpdated): void {
 }
 
 export function handleRewardsWithdrawn(event: RewardsWithdrawn): void {
-  let entity = RewardsWithdrawnEvent.load(event.transaction.hash.toString());
+  let entity = RewardsWithdrawnEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new RewardsWithdrawnEvent(event.transaction.hash.toString());
+    entity = new RewardsWithdrawnEvent(event.transaction.hash.toHexString());
   }
 
   entity.key = event.params.key;
@@ -101,10 +101,10 @@ export function handleRewardsWithdrawn(event: RewardsWithdrawn): void {
 }
 
 export function handleWithdrawn(event: Withdrawn): void {
-  let entity = WithdrawnEvent.load(event.transaction.hash.toString());
+  let entity = WithdrawnEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new WithdrawnEvent(event.transaction.hash.toString());
+    entity = new WithdrawnEvent(event.transaction.hash.toHexString());
   }
 
   entity.key = event.params.key;

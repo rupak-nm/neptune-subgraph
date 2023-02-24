@@ -12,10 +12,10 @@ import {
 } from "../../generated/schema";
 
 export function handleFeeBurned(event: FeeBurned): void {
-  let entity = FeeBurnedEvent.load(event.transaction.hash.toString());
+  let entity = FeeBurnedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new FeeBurnedEvent(event.transaction.hash.toString());
+    entity = new FeeBurnedEvent(event.transaction.hash.toHexString());
   }
 
   entity.coverKey = event.params.coverKey;
@@ -29,10 +29,10 @@ export function handleFeeBurned(event: FeeBurned): void {
 }
 
 export function handleStakeAdded(event: StakeAdded): void {
-  let entity = StakeAddedEvent.load(event.transaction.hash.toString());
+  let entity = StakeAddedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new StakeAddedEvent(event.transaction.hash.toString());
+    entity = new StakeAddedEvent(event.transaction.hash.toHexString());
   }
 
   entity.coverKey = event.params.coverKey;
@@ -47,10 +47,10 @@ export function handleStakeAdded(event: StakeAdded): void {
 }
 
 export function handleStakeRemoved(event: StakeRemoved): void {
-  let entity = StakeRemovedEvent.load(event.transaction.hash.toString());
+  let entity = StakeRemovedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new StakeRemovedEvent(event.transaction.hash.toString());
+    entity = new StakeRemovedEvent(event.transaction.hash.toHexString());
   }
 
   entity.coverKey = event.params.coverKey;

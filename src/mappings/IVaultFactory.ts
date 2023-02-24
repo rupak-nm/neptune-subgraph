@@ -4,10 +4,10 @@ import { VaultDeployed } from "../../generated/templates/IVaultFactory/IVaultFac
 import { VaultDeployedEvent } from "../../generated/schema";
 
 export function handleVaultDeployed(event: VaultDeployed): void {
-  let entity = VaultDeployedEvent.load(event.transaction.hash.toString());
+  let entity = VaultDeployedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new VaultDeployedEvent(event.transaction.hash.toString());
+    entity = new VaultDeployedEvent(event.transaction.hash.toHexString());
   }
 
   entity.vault = event.params.vault;

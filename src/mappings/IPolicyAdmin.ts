@@ -10,10 +10,12 @@ import {
 } from "../../generated/schema";
 
 export function handleCoverPolicyRateSet(event: CoverPolicyRateSet): void {
-  let entity = CoverPolicyRateSetEvent.load(event.transaction.hash.toString());
+  let entity = CoverPolicyRateSetEvent.load(
+    event.transaction.hash.toHexString()
+  );
 
   if (!entity) {
-    entity = new CoverPolicyRateSetEvent(event.transaction.hash.toString());
+    entity = new CoverPolicyRateSetEvent(event.transaction.hash.toHexString());
   }
 
   entity.coverKey = event.params.coverKey;
@@ -28,10 +30,10 @@ export function handleCoverPolicyRateSet(event: CoverPolicyRateSet): void {
 }
 
 export function handleCoverageLagSet(event: CoverageLagSet): void {
-  let entity = CoverageLagSetEvent.load(event.transaction.hash.toString());
+  let entity = CoverageLagSetEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new CoverageLagSetEvent(event.transaction.hash.toString());
+    entity = new CoverageLagSetEvent(event.transaction.hash.toHexString());
   }
 
   entity.coverKey = event.params.coverKey;

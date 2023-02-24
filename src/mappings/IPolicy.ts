@@ -4,10 +4,10 @@ import { CoverPurchased } from "../../generated/templates/IPolicy/IPolicy";
 import { CoverPurchasedEvent } from "../../generated/schema";
 
 export function handleCoverPurchased(event: CoverPurchased): void {
-  let entity = CoverPurchasedEvent.load(event.transaction.hash.toString());
+  let entity = CoverPurchasedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new CoverPurchasedEvent(event.transaction.hash.toString());
+    entity = new CoverPurchasedEvent(event.transaction.hash.toHexString());
   }
 
   entity.onBehalfOf = event.params.args.onBehalfOf;

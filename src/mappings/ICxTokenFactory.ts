@@ -4,10 +4,10 @@ import { CxTokenDeployed } from "../../generated/templates/ICxTokenFactory/ICxTo
 import { CxTokenDeployedEvent } from "../../generated/schema";
 
 export function handleCxTokenDeployed(event: CxTokenDeployed): void {
-  let entity = CxTokenDeployedEvent.load(event.transaction.hash.toString());
+  let entity = CxTokenDeployedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new CxTokenDeployedEvent(event.transaction.hash.toString());
+    entity = new CxTokenDeployedEvent(event.transaction.hash.toHexString());
   }
 
   entity.cxToken = event.params.cxToken;

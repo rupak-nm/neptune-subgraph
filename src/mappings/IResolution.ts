@@ -23,12 +23,12 @@ export function handleCooldownPeriodConfigured(
   event: CooldownPeriodConfigured
 ): void {
   let entity = CooldownPeriodConfiguredEvent.load(
-    event.transaction.hash.toString()
+    event.transaction.hash.toHexString()
   );
 
   if (!entity) {
     entity = new CooldownPeriodConfiguredEvent(
-      event.transaction.hash.toString()
+      event.transaction.hash.toHexString()
     );
   }
 
@@ -43,10 +43,10 @@ export function handleCooldownPeriodConfigured(
 }
 
 export function handleFinalized(event: Finalized): void {
-  let entity = FinalizedEvent.load(event.transaction.hash.toString());
+  let entity = FinalizedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new FinalizedEvent(event.transaction.hash.toString());
+    entity = new FinalizedEvent(event.transaction.hash.toHexString());
   }
 
   entity.coverKey = event.params.coverKey;
@@ -62,10 +62,10 @@ export function handleFinalized(event: Finalized): void {
 }
 
 export function handleGovernanceBurned(event: GovernanceBurned): void {
-  let entity = GovernanceBurnedEvent.load(event.transaction.hash.toString());
+  let entity = GovernanceBurnedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new GovernanceBurnedEvent(event.transaction.hash.toString());
+    entity = new GovernanceBurnedEvent(event.transaction.hash.toHexString());
   }
 
   entity.coverKey = event.params.coverKey;
@@ -83,10 +83,10 @@ export function handleGovernanceBurned(event: GovernanceBurned): void {
 }
 
 export function handleReportClosed(event: ReportClosed): void {
-  let entity = ReportClosedEvent.load(event.transaction.hash.toString());
+  let entity = ReportClosedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new ReportClosedEvent(event.transaction.hash.toString());
+    entity = new ReportClosedEvent(event.transaction.hash.toHexString());
   }
 
   entity.coverKey = event.params.coverKey;
@@ -105,12 +105,12 @@ export function handleReporterRewardDistributed(
   event: ReporterRewardDistributed
 ): void {
   let entity = ReporterRewardDistributedEvent.load(
-    event.transaction.hash.toString()
+    event.transaction.hash.toHexString()
   );
 
   if (!entity) {
     entity = new ReporterRewardDistributedEvent(
-      event.transaction.hash.toString()
+      event.transaction.hash.toHexString()
     );
   }
 
@@ -129,10 +129,10 @@ export function handleReporterRewardDistributed(
 }
 
 export function handleResolved(event: Resolved): void {
-  let entity = ResolvedEvent.load(event.transaction.hash.toString());
+  let entity = ResolvedEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new ResolvedEvent(event.transaction.hash.toString());
+    entity = new ResolvedEvent(event.transaction.hash.toHexString());
   }
 
   entity.coverKey = event.params.coverKey;
@@ -152,10 +152,10 @@ export function handleResolved(event: Resolved): void {
 }
 
 export function handleUnstaken(event: Unstaken): void {
-  let entity = UnstakenEvent.load(event.transaction.hash.toString());
+  let entity = UnstakenEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new UnstakenEvent(event.transaction.hash.toString());
+    entity = new UnstakenEvent(event.transaction.hash.toHexString());
   }
 
   entity.coverKey = event.params.coverKey;

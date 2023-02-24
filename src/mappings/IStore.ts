@@ -5,10 +5,10 @@ import { PausersSetEvent } from "../../generated/schema";
 import { Bytes } from "@graphprotocol/graph-ts";
 
 export function handlePausersSet(event: PausersSet): void {
-  let entity = PausersSetEvent.load(event.transaction.hash.toString());
+  let entity = PausersSetEvent.load(event.transaction.hash.toHexString());
 
   if (!entity) {
-    entity = new PausersSetEvent(event.transaction.hash.toString());
+    entity = new PausersSetEvent(event.transaction.hash.toHexString());
   }
 
   entity.addedBy = event.params.addedBy;
