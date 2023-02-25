@@ -3,5 +3,5 @@
   "StartBlock": "15903293",
   "Network": "mainnet",
 
-  "deployAccount": ""
+  "deployAccount": "rupak-nm/neptune-subgraph-ethereum"
 }

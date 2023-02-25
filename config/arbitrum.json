@@ -3,5 +3,5 @@
   "StartBlock": "53770093",
   "Network": "arbitrum-one",
 
-  "deployAccount": ""
+  "deployAccount": "rupak-nm/neptune-subgraph-arbitrum"
 }
