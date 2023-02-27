@@ -904,3 +904,39 @@ type VaultDeployedEvent @entity {
   createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
+
+type CxTokenApprovalEvent @entity {
+  id: ID!
+
+  owner: Bytes!
+  spender: Bytes!
+  value: BigInt!
+
+  createdAtTimestamp: BigInt!
+  transaction: Transaction!
+}
+
+type CoverageStartSetEvent @entity {
+  id: ID!
+
+  policyId: BigInt!
+  coverKey: Bytes!
+  productKey: Bytes!
+  account: Bytes!
+  effectiveFrom: BigInt!
+  amount: BigInt!
+
+  createdAtTimestamp: BigInt!
+  transaction: Transaction!
+}
+
+type CxTokenTransferEvent @entity {
+  id: ID!
+
+  from: Bytes!
+  to: Bytes!
+  value: BigInt!
+
+  createdAtTimestamp: BigInt!
+  transaction: Transaction!
+}

@@ -413,3 +413,25 @@ templates:
       eventHandlers:
         - event: VaultDeployed(address,indexed bytes32,string,string)
           handler: handleVaultDeployed
+  - kind: ethereum
+    name: ICxToken
+    network: fuji
+    source:
+      abi: ICxToken
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./src/mappings/ICxToken.ts
+      entities:
+        - CxToken
+      abis:
+        - name: ICxToken
+          file: ./abis/ICxToken.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: CoverageStartSet(uint256,bytes32,bytes32,address,uint256,uint256)
+          handler: handleCoverageStartSet  
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
