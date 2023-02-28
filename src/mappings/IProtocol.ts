@@ -55,6 +55,7 @@ import {
   CNS_COVER_VAULT,
 } from "../utils/keys";
 import { Address, ByteArray, Bytes } from "@graphprotocol/graph-ts";
+import { createEventID } from "../initializers/EventId";
 
 function isMatch(namespace: Bytes, key: ByteArray): boolean {
   return Bytes.fromUTF8(namespace.toString()).equals(key);
@@ -151,10 +152,11 @@ export function handleContractUpgraded(event: ContractUpgraded): void {
 }
 
 export function handleInitialized(event: Initialized): void {
-  let entity = InitializedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = InitializedEvent.load(id);
 
   if (!entity) {
-    entity = new InitializedEvent(event.transaction.hash.toHexString());
+    entity = new InitializedEvent(id);
   }
 
   entity.burner = event.params.args.burner;
@@ -191,10 +193,11 @@ export function handleInitialized(event: Initialized): void {
 }
 
 export function handleMemberAdded(event: MemberAdded): void {
-  let entity = MemberAddedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = MemberAddedEvent.load(id);
 
   if (!entity) {
-    entity = new MemberAddedEvent(event.transaction.hash.toHexString());
+    entity = new MemberAddedEvent(id);
   }
 
   entity.member = event.params.member;
@@ -207,10 +210,11 @@ export function handleMemberAdded(event: MemberAdded): void {
 }
 
 export function handleMemberRemoved(event: MemberRemoved): void {
-  let entity = MemberRemovedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = MemberRemovedEvent.load(id);
 
   if (!entity) {
-    entity = new MemberRemovedEvent(event.transaction.hash.toHexString());
+    entity = new MemberRemovedEvent(id);
   }
 
   entity.member = event.params.member;
@@ -223,10 +227,11 @@ export function handleMemberRemoved(event: MemberRemoved): void {
 }
 
 export function handleRoleAdminChanged(event: RoleAdminChanged): void {
-  let entity = RoleAdminChangedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = RoleAdminChangedEvent.load(id);
 
   if (!entity) {
-    entity = new RoleAdminChangedEvent(event.transaction.hash.toHexString());
+    entity = new RoleAdminChangedEvent(id);
   }
 
   entity.role = event.params.role;
@@ -241,10 +246,11 @@ export function handleRoleAdminChanged(event: RoleAdminChanged): void {
 }
 
 export function handleRoleGranted(event: RoleGranted): void {
-  let entity = RoleGrantedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = RoleGrantedEvent.load(id);
 
   if (!entity) {
-    entity = new RoleGrantedEvent(event.transaction.hash.toHexString());
+    entity = new RoleGrantedEvent(id);
   }
 
   entity.role = event.params.role;
@@ -259,10 +265,11 @@ export function handleRoleGranted(event: RoleGranted): void {
 }
 
 export function handleRoleRevoked(event: RoleRevoked): void {
-  let entity = RoleRevokedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = RoleRevokedEvent.load(id);
 
   if (!entity) {
-    entity = new RoleRevokedEvent(event.transaction.hash.toHexString());
+    entity = new RoleRevokedEvent(id);
   }
 
   entity.role = event.params.role;

@@ -26,12 +26,14 @@ import {
   ProductStateUpdatedEvent,
   ProductUpdatedEvent,
 } from "../../generated/schema";
+import { createEventID } from "../initializers/EventId";
 
 export function handleCoverCreated(event: CoverCreated): void {
-  let entity = CoverCreatedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = CoverCreatedEvent.load(id);
 
   if (!entity) {
-    entity = new CoverCreatedEvent(event.transaction.hash.toHexString());
+    entity = new CoverCreatedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -49,12 +51,11 @@ export function handleCoverCreated(event: CoverCreated): void {
 }
 
 export function handleCoverCreationFeeSet(event: CoverCreationFeeSet): void {
-  let entity = CoverCreationFeeSetEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = createEventID(event);
+  let entity = CoverCreationFeeSetEvent.load(id);
 
   if (!entity) {
-    entity = new CoverCreationFeeSetEvent(event.transaction.hash.toHexString());
+    entity = new CoverCreationFeeSetEvent(id);
   }
 
   entity.previous = event.params.previous;
@@ -70,14 +71,11 @@ export function handleCoverCreationFeeSet(event: CoverCreationFeeSet): void {
 export function handleCoverCreatorWhitelistUpdated(
   event: CoverCreatorWhitelistUpdated
 ): void {
-  let entity = CoverCreatorWhitelistUpdatedEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = createEventID(event);
+  let entity = CoverCreatorWhitelistUpdatedEvent.load(id);
 
   if (!entity) {
-    entity = new CoverCreatorWhitelistUpdatedEvent(
-      event.transaction.hash.toHexString()
-    );
+    entity = new CoverCreatorWhitelistUpdatedEvent(id);
   }
 
   entity.account = event.params.account;
@@ -91,10 +89,11 @@ export function handleCoverCreatorWhitelistUpdated(
 }
 
 export function handleCoverInitialized(event: CoverInitialized): void {
-  let entity = CoverInitializedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = CoverInitializedEvent.load(id);
 
   if (!entity) {
-    entity = new CoverInitializedEvent(event.transaction.hash.toHexString());
+    entity = new CoverInitializedEvent(id);
   }
 
   entity.stablecoin = event.params.stablecoin;
@@ -108,10 +107,11 @@ export function handleCoverInitialized(event: CoverInitialized): void {
 }
 
 export function handleCoverUpdated(event: CoverUpdated): void {
-  let entity = CoverUpdatedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = CoverUpdatedEvent.load(id);
 
   if (!entity) {
-    entity = new CoverUpdatedEvent(event.transaction.hash.toHexString());
+    entity = new CoverUpdatedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -153,14 +153,11 @@ export function handleCoverUserWhitelistUpdated(
 export function handleMinCoverCreationStakeSet(
   event: MinCoverCreationStakeSet
 ): void {
-  let entity = MinCoverCreationStakeSetEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = createEventID(event);
+  let entity = MinCoverCreationStakeSetEvent.load(id);
 
   if (!entity) {
-    entity = new MinCoverCreationStakeSetEvent(
-      event.transaction.hash.toHexString()
-    );
+    entity = new MinCoverCreationStakeSetEvent(id);
   }
 
   entity.previous = event.params.previous;
@@ -176,14 +173,11 @@ export function handleMinCoverCreationStakeSet(
 export function handleMinStakeToAddLiquiditySet(
   event: MinStakeToAddLiquiditySet
 ): void {
-  let entity = MinStakeToAddLiquiditySetEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = createEventID(event);
+  let entity = MinStakeToAddLiquiditySetEvent.load(id);
 
   if (!entity) {
-    entity = new MinStakeToAddLiquiditySetEvent(
-      event.transaction.hash.toHexString()
-    );
+    entity = new MinStakeToAddLiquiditySetEvent(id);
   }
 
   entity.previous = event.params.previous;
@@ -220,12 +214,11 @@ export function handleProductCreated(event: ProductCreated): void {
 }
 
 export function handleProductStateUpdated(event: ProductStateUpdated): void {
-  let entity = ProductStateUpdatedEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = createEventID(event);
+  let entity = ProductStateUpdatedEvent.load(id);
 
   if (!entity) {
-    entity = new ProductStateUpdatedEvent(event.transaction.hash.toHexString());
+    entity = new ProductStateUpdatedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -242,10 +235,11 @@ export function handleProductStateUpdated(event: ProductStateUpdated): void {
 }
 
 export function handleProductUpdated(event: ProductUpdated): void {
-  let entity = ProductUpdatedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = ProductUpdatedEvent.load(id);
 
   if (!entity) {
-    entity = new ProductUpdatedEvent(event.transaction.hash.toHexString());
+    entity = new ProductUpdatedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;

@@ -2,12 +2,14 @@ import { loadTransaction } from "../initializers/Transaction";
 
 import { VaultDeployed } from "../../generated/templates/IVaultFactory/IVaultFactory";
 import { VaultDeployedEvent } from "../../generated/schema";
+import { createEventID } from "../initializers/EventId";
 
 export function handleVaultDeployed(event: VaultDeployed): void {
-  let entity = VaultDeployedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = VaultDeployedEvent.load(id);
 
   if (!entity) {
-    entity = new VaultDeployedEvent(event.transaction.hash.toHexString());
+    entity = new VaultDeployedEvent(id);
   }
 
   entity.vault = event.params.vault;

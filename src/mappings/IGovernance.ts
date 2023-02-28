@@ -18,12 +18,14 @@ import {
   ReporterCommissionSetEvent,
   ReportingBurnRateSetEvent,
 } from "../../generated/schema";
+import { createEventID } from "../initializers/EventId";
 
 export function handleAttested(event: Attested): void {
-  let entity = AttestedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = AttestedEvent.load(id);
 
   if (!entity) {
-    entity = new AttestedEvent(event.transaction.hash.toHexString());
+    entity = new AttestedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -40,10 +42,11 @@ export function handleAttested(event: Attested): void {
 }
 
 export function handleDisputed(event: Disputed): void {
-  let entity = DisputedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = DisputedEvent.load(id);
 
   if (!entity) {
-    entity = new DisputedEvent(event.transaction.hash.toHexString());
+    entity = new DisputedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -63,14 +66,11 @@ export function handleDisputed(event: Disputed): void {
 export function handleFirstReportingStakeSet(
   event: FirstReportingStakeSet
 ): void {
-  let entity = FirstReportingStakeSetEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = createEventID(event);
+  let entity = FirstReportingStakeSetEvent.load(id);
 
   if (!entity) {
-    entity = new FirstReportingStakeSetEvent(
-      event.transaction.hash.toHexString()
-    );
+    entity = new FirstReportingStakeSetEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -85,10 +85,11 @@ export function handleFirstReportingStakeSet(
 }
 
 export function handleRefuted(event: Refuted): void {
-  let entity = RefutedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = RefutedEvent.load(id);
 
   if (!entity) {
-    entity = new RefutedEvent(event.transaction.hash.toHexString());
+    entity = new RefutedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -105,10 +106,11 @@ export function handleRefuted(event: Refuted): void {
 }
 
 export function handleReported(event: Reported): void {
-  let entity = ReportedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = ReportedEvent.load(id);
 
   if (!entity) {
-    entity = new ReportedEvent(event.transaction.hash.toHexString());
+    entity = new ReportedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -129,14 +131,11 @@ export function handleReported(event: Reported): void {
 export function handleReporterCommissionSet(
   event: ReporterCommissionSet
 ): void {
-  let entity = ReporterCommissionSetEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = createEventID(event);
+  let entity = ReporterCommissionSetEvent.load(id);
 
   if (!entity) {
-    entity = new ReporterCommissionSetEvent(
-      event.transaction.hash.toHexString()
-    );
+    entity = new ReporterCommissionSetEvent(id);
   }
 
   entity.previous = event.params.previous;
@@ -150,14 +149,11 @@ export function handleReporterCommissionSet(
 }
 
 export function handleReportingBurnRateSet(event: ReportingBurnRateSet): void {
-  let entity = ReportingBurnRateSetEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = createEventID(event);
+  let entity = ReportingBurnRateSetEvent.load(id);
 
   if (!entity) {
-    entity = new ReportingBurnRateSetEvent(
-      event.transaction.hash.toHexString()
-    );
+    entity = new ReportingBurnRateSetEvent(id);
   }
 
   entity.previous = event.params.previous;

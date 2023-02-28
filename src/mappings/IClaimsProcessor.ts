@@ -10,12 +10,14 @@ import {
   ClaimPeriodSetEvent,
   ClaimedEvent,
 } from "../../generated/schema";
+import { createEventID } from "../initializers/EventId";
 
 export function handleBlacklistSet(event: BlacklistSet): void {
-  let entity = BlacklistSetEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = BlacklistSetEvent.load(id);
 
   if (!entity) {
-    entity = new BlacklistSetEvent(event.transaction.hash.toHexString());
+    entity = new BlacklistSetEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -32,10 +34,11 @@ export function handleBlacklistSet(event: BlacklistSet): void {
 }
 
 export function handleClaimPeriodSet(event: ClaimPeriodSet): void {
-  let entity = ClaimPeriodSetEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = ClaimPeriodSetEvent.load(id);
 
   if (!entity) {
-    entity = new ClaimPeriodSetEvent(event.transaction.hash.toHexString());
+    entity = new ClaimPeriodSetEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -50,10 +53,11 @@ export function handleClaimPeriodSet(event: ClaimPeriodSet): void {
 }
 
 export function handleClaimed(event: Claimed): void {
-  let entity = ClaimedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = ClaimedEvent.load(id);
 
   if (!entity) {
-    entity = new ClaimedEvent(event.transaction.hash.toHexString());
+    entity = new ClaimedEvent(id);
   }
 
   entity.cxToken = event.params.cxToken;

@@ -10,12 +10,14 @@ import {
   ReassuranceAddedEvent,
   WeightSetEvent,
 } from "../../generated/schema";
+import { createEventID } from "../initializers/EventId";
 
 export function handlePoolCapitalized(event: PoolCapitalized): void {
-  let entity = PoolCapitalizedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = PoolCapitalizedEvent.load(id);
 
   if (!entity) {
-    entity = new PoolCapitalizedEvent(event.transaction.hash.toHexString());
+    entity = new PoolCapitalizedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -31,10 +33,11 @@ export function handlePoolCapitalized(event: PoolCapitalized): void {
 }
 
 export function handleReassuranceAdded(event: ReassuranceAdded): void {
-  let entity = ReassuranceAddedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = ReassuranceAddedEvent.load(id);
 
   if (!entity) {
-    entity = new ReassuranceAddedEvent(event.transaction.hash.toHexString());
+    entity = new ReassuranceAddedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -49,10 +52,11 @@ export function handleReassuranceAdded(event: ReassuranceAdded): void {
 }
 
 export function handleWeightSet(event: WeightSet): void {
-  let entity = WeightSetEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = WeightSetEvent.load(id);
 
   if (!entity) {
-    entity = new WeightSetEvent(event.transaction.hash.toHexString());
+    entity = new WeightSetEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;

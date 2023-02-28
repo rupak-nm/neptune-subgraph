@@ -14,9 +14,10 @@ import {
   RewardsWithdrawnEvent,
   WithdrawnEvent,
 } from "../../generated/schema";
+import { createEventID } from "../initializers/EventId";
 
 export function handleDeposited(event: Deposited): void {
-  const id = event.transaction.hash.toHexString().concat("-deposit");
+  const id = createEventID(event).concat("-deposit");
 
   let entity = DepositedEvent.load(id);
 
@@ -37,10 +38,11 @@ export function handleDeposited(event: Deposited): void {
 }
 
 export function handlePoolClosed(event: PoolClosed): void {
-  let entity = PoolClosedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = PoolClosedEvent.load(id);
 
   if (!entity) {
-    entity = new PoolClosedEvent(event.transaction.hash.toHexString());
+    entity = new PoolClosedEvent(id);
   }
 
   entity.key = event.params.key;
@@ -54,10 +56,11 @@ export function handlePoolClosed(event: PoolClosed): void {
 }
 
 export function handlePoolUpdated(event: PoolUpdated): void {
-  let entity = PoolUpdatedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = PoolUpdatedEvent.load(id);
 
   if (!entity) {
-    entity = new PoolUpdatedEvent(event.transaction.hash.toHexString());
+    entity = new PoolUpdatedEvent(id);
   }
 
   entity.key = event.params.key;
@@ -83,7 +86,7 @@ export function handlePoolUpdated(event: PoolUpdated): void {
 }
 
 export function handleRewardsWithdrawn(event: RewardsWithdrawn): void {
-  const id = event.transaction.hash.toHexString().concat("-rewards-withdrawal");
+  const id = createEventID(event).concat("-rewards-withdrawal");
 
   let entity = RewardsWithdrawnEvent.load(id);
 
@@ -105,7 +108,7 @@ export function handleRewardsWithdrawn(event: RewardsWithdrawn): void {
 }
 
 export function handleWithdrawn(event: Withdrawn): void {
-  const id = event.transaction.hash.toHexString().concat("-withdrawal");
+  const id = createEventID(event).concat("-withdrawal");
 
   let entity = WithdrawnEvent.load(id);
 

@@ -2,12 +2,14 @@ import { loadTransaction } from "../initializers/Transaction";
 
 import { CxTokenDeployed } from "../../generated/templates/ICxTokenFactory/ICxTokenFactory";
 import { CxTokenDeployedEvent } from "../../generated/schema";
+import { createEventID } from "../initializers/EventId";
 
 export function handleCxTokenDeployed(event: CxTokenDeployed): void {
-  let entity = CxTokenDeployedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = CxTokenDeployedEvent.load(id);
 
   if (!entity) {
-    entity = new CxTokenDeployedEvent(event.transaction.hash.toHexString());
+    entity = new CxTokenDeployedEvent(id);
   }
 
   entity.cxToken = event.params.cxToken;

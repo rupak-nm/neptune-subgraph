@@ -10,12 +10,14 @@ import {
   BondCreatedEvent,
   BondPoolSetupEvent,
 } from "../../generated/schema";
+import { createEventID } from "../initializers/EventId";
 
 export function handleBondClaimed(event: BondClaimed): void {
-  let entity = BondClaimedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = BondClaimedEvent.load(id);
 
   if (!entity) {
-    entity = new BondClaimedEvent(event.transaction.hash.toHexString());
+    entity = new BondClaimedEvent(id);
   }
 
   entity.account = event.params.account;
@@ -29,10 +31,11 @@ export function handleBondClaimed(event: BondClaimed): void {
 }
 
 export function handleBondCreated(event: BondCreated): void {
-  let entity = BondCreatedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = BondCreatedEvent.load(id);
 
   if (!entity) {
-    entity = new BondCreatedEvent(event.transaction.hash.toHexString());
+    entity = new BondCreatedEvent(id);
   }
 
   entity.account = event.params.account;
@@ -48,10 +51,11 @@ export function handleBondCreated(event: BondCreated): void {
 }
 
 export function handleBondPoolSetup(event: BondPoolSetup): void {
-  let entity = BondPoolSetupEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = BondPoolSetupEvent.load(id);
 
   if (!entity) {
-    entity = new BondPoolSetupEvent(event.transaction.hash.toHexString());
+    entity = new BondPoolSetupEvent(id);
   }
 
   entity.lpToken = event.params.args.lpToken;

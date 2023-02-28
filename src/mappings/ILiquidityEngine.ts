@@ -16,18 +16,16 @@ import {
   StrategyDeletedEvent,
   StrategyDisabledEvent,
 } from "../../generated/schema";
+import { createEventID } from "../initializers/EventId";
 
 export function handleLiquidityStateUpdateIntervalSet(
   event: LiquidityStateUpdateIntervalSet
 ): void {
-  let entity = LiquidityStateUpdateIntervalSetEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = createEventID(event);
+  let entity = LiquidityStateUpdateIntervalSetEvent.load(id);
 
   if (!entity) {
-    entity = new LiquidityStateUpdateIntervalSetEvent(
-      event.transaction.hash.toHexString()
-    );
+    entity = new LiquidityStateUpdateIntervalSetEvent(id);
   }
 
   entity.duration = event.params.duration;
@@ -40,12 +38,11 @@ export function handleLiquidityStateUpdateIntervalSet(
 }
 
 export function handleMaxLendingRatioSet(event: MaxLendingRatioSet): void {
-  let entity = MaxLendingRatioSetEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = createEventID(event);
+  let entity = MaxLendingRatioSetEvent.load(id);
 
   if (!entity) {
-    entity = new MaxLendingRatioSetEvent(event.transaction.hash.toHexString());
+    entity = new MaxLendingRatioSetEvent(id);
   }
 
   entity.ratio = event.params.ratio;
@@ -58,14 +55,11 @@ export function handleMaxLendingRatioSet(event: MaxLendingRatioSet): void {
 }
 
 export function handleRiskPoolingPeriodSet(event: RiskPoolingPeriodSet): void {
-  let entity = RiskPoolingPeriodSetEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = createEventID(event);
+  let entity = RiskPoolingPeriodSetEvent.load(id);
 
   if (!entity) {
-    entity = new RiskPoolingPeriodSetEvent(
-      event.transaction.hash.toHexString()
-    );
+    entity = new RiskPoolingPeriodSetEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -80,10 +74,11 @@ export function handleRiskPoolingPeriodSet(event: RiskPoolingPeriodSet): void {
 }
 
 export function handleStrategyAdded(event: StrategyAdded): void {
-  let entity = StrategyAddedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = StrategyAddedEvent.load(id);
 
   if (!entity) {
-    entity = new StrategyAddedEvent(event.transaction.hash.toHexString());
+    entity = new StrategyAddedEvent(id);
   }
 
   entity.strategy = event.params.strategy;
@@ -96,10 +91,11 @@ export function handleStrategyAdded(event: StrategyAdded): void {
 }
 
 export function handleStrategyDeleted(event: StrategyDeleted): void {
-  let entity = StrategyDeletedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = StrategyDeletedEvent.load(id);
 
   if (!entity) {
-    entity = new StrategyDeletedEvent(event.transaction.hash.toHexString());
+    entity = new StrategyDeletedEvent(id);
   }
 
   entity.strategy = event.params.strategy;
@@ -112,10 +108,11 @@ export function handleStrategyDeleted(event: StrategyDeleted): void {
 }
 
 export function handleStrategyDisabled(event: StrategyDisabled): void {
-  let entity = StrategyDisabledEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = StrategyDisabledEvent.load(id);
 
   if (!entity) {
-    entity = new StrategyDisabledEvent(event.transaction.hash.toHexString());
+    entity = new StrategyDisabledEvent(id);
   }
 
   entity.strategy = event.params.strategy;

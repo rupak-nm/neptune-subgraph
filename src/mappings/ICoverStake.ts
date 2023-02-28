@@ -10,12 +10,14 @@ import {
   StakeAddedEvent,
   StakeRemovedEvent,
 } from "../../generated/schema";
+import { createEventID } from "../initializers/EventId";
 
 export function handleFeeBurned(event: FeeBurned): void {
-  let entity = FeeBurnedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = FeeBurnedEvent.load(id);
 
   if (!entity) {
-    entity = new FeeBurnedEvent(event.transaction.hash.toHexString());
+    entity = new FeeBurnedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -29,10 +31,11 @@ export function handleFeeBurned(event: FeeBurned): void {
 }
 
 export function handleStakeAdded(event: StakeAdded): void {
-  let entity = StakeAddedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = StakeAddedEvent.load(id);
 
   if (!entity) {
-    entity = new StakeAddedEvent(event.transaction.hash.toHexString());
+    entity = new StakeAddedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -47,10 +50,11 @@ export function handleStakeAdded(event: StakeAdded): void {
 }
 
 export function handleStakeRemoved(event: StakeRemoved): void {
-  let entity = StakeRemovedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = StakeRemovedEvent.load(id);
 
   if (!entity) {
-    entity = new StakeRemovedEvent(event.transaction.hash.toHexString());
+    entity = new StakeRemovedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;

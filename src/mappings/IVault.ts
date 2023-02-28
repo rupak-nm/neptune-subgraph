@@ -30,12 +30,14 @@ import {
   StrategyTransferEvent,
   TransferEvent,
 } from "../../generated/schema";
+import { createEventID } from "../initializers/EventId";
 
 export function handleApproval(event: Approval): void {
-  let entity = ApprovalEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event)
+  let entity = ApprovalEvent.load(id);
 
   if (!entity) {
-    entity = new ApprovalEvent(event.transaction.hash.toHexString());
+    entity = new ApprovalEvent(id);
   }
 
   entity.owner = event.params.owner;
@@ -50,10 +52,11 @@ export function handleApproval(event: Approval): void {
 }
 
 export function handleEntered(event: Entered): void {
-  let entity = EnteredEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event)
+  let entity = EnteredEvent.load(id);
 
   if (!entity) {
-    entity = new EnteredEvent(event.transaction.hash.toHexString());
+    entity = new EnteredEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -67,10 +70,11 @@ export function handleEntered(event: Entered): void {
 }
 
 export function handleExited(event: Exited): void {
-  let entity = ExitedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event)
+  let entity = ExitedEvent.load(id);
 
   if (!entity) {
-    entity = new ExitedEvent(event.transaction.hash.toHexString());
+    entity = new ExitedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -84,12 +88,11 @@ export function handleExited(event: Exited): void {
 }
 
 export function handleFlashLoanBorrowed(event: FlashLoanBorrowed): void {
-  let entity = FlashLoanBorrowedEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = createEventID(event)
+  let entity = FlashLoanBorrowedEvent.load(id);
 
   if (!entity) {
-    entity = new FlashLoanBorrowedEvent(event.transaction.hash.toHexString());
+    entity = new FlashLoanBorrowedEvent(id);
   }
 
   entity.lender = event.params.lender;
@@ -106,12 +109,11 @@ export function handleFlashLoanBorrowed(event: FlashLoanBorrowed): void {
 }
 
 export function handleGovernanceTransfer(event: GovernanceTransfer): void {
-  let entity = GovernanceTransferEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = createEventID(event)
+  let entity = GovernanceTransferEvent.load(id);
 
   if (!entity) {
-    entity = new GovernanceTransferEvent(event.transaction.hash.toHexString());
+    entity = new GovernanceTransferEvent(id);
   }
 
   entity.to = event.params.to;
@@ -125,10 +127,11 @@ export function handleGovernanceTransfer(event: GovernanceTransfer): void {
 }
 
 export function handleInterestAccrued(event: InterestAccrued): void {
-  let entity = InterestAccruedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event)
+  let entity = InterestAccruedEvent.load(id);
 
   if (!entity) {
-    entity = new InterestAccruedEvent(event.transaction.hash.toHexString());
+    entity = new InterestAccruedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -141,10 +144,11 @@ export function handleInterestAccrued(event: InterestAccrued): void {
 }
 
 export function handleNpmStaken(event: NpmStaken): void {
-  let entity = NpmStakenEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event)
+  let entity = NpmStakenEvent.load(id);
 
   if (!entity) {
-    entity = new NpmStakenEvent(event.transaction.hash.toHexString());
+    entity = new NpmStakenEvent(id);
   }
 
   entity.account = event.params.account;
@@ -158,10 +162,11 @@ export function handleNpmStaken(event: NpmStaken): void {
 }
 
 export function handleNpmUnstaken(event: NpmUnstaken): void {
-  let entity = NpmUnstakenEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event)
+  let entity = NpmUnstakenEvent.load(id);
 
   if (!entity) {
-    entity = new NpmUnstakenEvent(event.transaction.hash.toHexString());
+    entity = new NpmUnstakenEvent(id);
   }
 
   entity.account = event.params.account;
@@ -175,10 +180,11 @@ export function handleNpmUnstaken(event: NpmUnstaken): void {
 }
 
 export function handlePodsIssued(event: PodsIssued): void {
-  let entity = PodsIssuedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event)
+  let entity = PodsIssuedEvent.load(id);
 
   if (!entity) {
-    entity = new PodsIssuedEvent(event.transaction.hash.toHexString());
+    entity = new PodsIssuedEvent(id);
   }
 
   entity.account = event.params.account;
@@ -194,10 +200,11 @@ export function handlePodsIssued(event: PodsIssued): void {
 }
 
 export function handlePodsRedeemed(event: PodsRedeemed): void {
-  let entity = PodsRedeemedEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event)
+  let entity = PodsRedeemedEvent.load(id);
 
   if (!entity) {
-    entity = new PodsRedeemedEvent(event.transaction.hash.toHexString());
+    entity = new PodsRedeemedEvent(id);
   }
 
   entity.account = event.params.account;
@@ -212,10 +219,11 @@ export function handlePodsRedeemed(event: PodsRedeemed): void {
 }
 
 export function handleStrategyReceipt(event: StrategyReceipt): void {
-  let entity = StrategyReceiptEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event)
+  let entity = StrategyReceiptEvent.load(id);
 
   if (!entity) {
-    entity = new StrategyReceiptEvent(event.transaction.hash.toHexString());
+    entity = new StrategyReceiptEvent(id);
   }
 
   entity.token = event.params.token;
@@ -233,10 +241,11 @@ export function handleStrategyReceipt(event: StrategyReceipt): void {
 }
 
 export function handleStrategyTransfer(event: StrategyTransfer): void {
-  let entity = StrategyTransferEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event)
+  let entity = StrategyTransferEvent.load(id);
 
   if (!entity) {
-    entity = new StrategyTransferEvent(event.transaction.hash.toHexString());
+    entity = new StrategyTransferEvent(id);
   }
 
   entity.token = event.params.token;
@@ -252,10 +261,11 @@ export function handleStrategyTransfer(event: StrategyTransfer): void {
 }
 
 export function handleTransfer(event: Transfer): void {
-  let entity = TransferEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event)
+  let entity = TransferEvent.load(id);
 
   if (!entity) {
-    entity = new TransferEvent(event.transaction.hash.toHexString());
+    entity = new TransferEvent(id);
   }
 
   entity.from = event.params.from;

@@ -10,12 +10,14 @@ import {
   CoverageStartSetEvent,
   CxTokenTransferEvent,
 } from "../../generated/schema";
+import { createEventID } from "../initializers/EventId";
 
 export function handleApproval(event: Approval): void {
-  let entity = CxTokenApprovalEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = CxTokenApprovalEvent.load(id);
 
   if (!entity) {
-    entity = new CxTokenApprovalEvent(event.transaction.hash.toHexString());
+    entity = new CxTokenApprovalEvent(id);
   }
 
   entity.owner = event.params.owner;
@@ -30,10 +32,11 @@ export function handleApproval(event: Approval): void {
 }
 
 export function handleCoverageStartSet(event: CoverageStartSet): void {
-  let entity = CoverageStartSetEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = CoverageStartSetEvent.load(id);
 
   if (!entity) {
-    entity = new CoverageStartSetEvent(event.transaction.hash.toHexString());
+    entity = new CoverageStartSetEvent(id);
   }
 
   entity.policyId = event.params.policyId;
@@ -51,10 +54,11 @@ export function handleCoverageStartSet(event: CoverageStartSet): void {
 }
 
 export function handleTransfer(event: Transfer): void {
-  let entity = CxTokenTransferEvent.load(event.transaction.hash.toHexString());
+  const id = createEventID(event);
+  let entity = CxTokenTransferEvent.load(id);
 
   if (!entity) {
-    entity = new CxTokenTransferEvent(event.transaction.hash.toHexString());
+    entity = new CxTokenTransferEvent(id);
   }
 
   entity.from = event.params.from;
