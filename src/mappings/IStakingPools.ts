@@ -16,10 +16,12 @@ import {
 } from "../../generated/schema";
 
 export function handleDeposited(event: Deposited): void {
-  let entity = DepositedEvent.load(event.transaction.hash.toHexString());
+  const id = event.transaction.hash.toHexString().concat("-deposit");
+
+  let entity = DepositedEvent.load(id);
 
   if (!entity) {
-    entity = new DepositedEvent(event.transaction.hash.toHexString());
+    entity = new DepositedEvent(id);
   }
 
   entity.key = event.params.key;
@@ -81,10 +83,12 @@ export function handlePoolUpdated(event: PoolUpdated): void {
 }
 
 export function handleRewardsWithdrawn(event: RewardsWithdrawn): void {
-  let entity = RewardsWithdrawnEvent.load(event.transaction.hash.toHexString());
+  const id = event.transaction.hash.toHexString().concat("-rewards-withdrawal");
+
+  let entity = RewardsWithdrawnEvent.load(id);
 
   if (!entity) {
-    entity = new RewardsWithdrawnEvent(event.transaction.hash.toHexString());
+    entity = new RewardsWithdrawnEvent(id);
   }
 
   entity.key = event.params.key;
@@ -101,10 +105,12 @@ export function handleRewardsWithdrawn(event: RewardsWithdrawn): void {
 }
 
 export function handleWithdrawn(event: Withdrawn): void {
-  let entity = WithdrawnEvent.load(event.transaction.hash.toHexString());
+  const id = event.transaction.hash.toHexString().concat("-withdrawal");
+
+  let entity = WithdrawnEvent.load(id);
 
   if (!entity) {
-    entity = new WithdrawnEvent(event.transaction.hash.toHexString());
+    entity = new WithdrawnEvent(id);
   }
 
   entity.key = event.params.key;

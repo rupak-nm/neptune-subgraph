@@ -96,10 +96,17 @@ function createTemplate(namespace: Bytes, address: Address): void {
 }
 
 export function handleContractAdded(event: ContractAdded): void {
-  let entity = ContractAddedEvent.load(event.transaction.hash.toHexString());
+  const id = event.transaction.hash
+    .toHexString()
+    .concat("-")
+    .concat(event.params.namespace.toString())
+    .concat("-")
+    .concat(event.params.contractAddress.toHexString());
+
+  let entity = ContractAddedEvent.load(id);
 
   if (!entity) {
-    entity = new ContractAddedEvent(event.transaction.hash.toHexString());
+    entity = new ContractAddedEvent(id);
   }
 
   entity.namespace = event.params.namespace.toString();
@@ -116,10 +123,17 @@ export function handleContractAdded(event: ContractAdded): void {
 }
 
 export function handleContractUpgraded(event: ContractUpgraded): void {
-  let entity = ContractUpgradedEvent.load(event.transaction.hash.toHexString());
+  const id = event.transaction.hash
+    .toHexString()
+    .concat("-")
+    .concat(event.params.namespace.toString())
+    .concat("-")
+    .concat(event.params.current.toHexString());
+
+  let entity = ContractUpgradedEvent.load(id);
 
   if (!entity) {
-    entity = new ContractUpgradedEvent(event.transaction.hash.toHexString());
+    entity = new ContractUpgradedEvent(id);
   }
 
   entity.namespace = event.params.namespace.toString();

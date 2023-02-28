@@ -7,8 +7,7 @@ const updateManifestFile = () => {
   const args = getParsedArgs();
 
   if (!args.network) {
-    console.log("Error: Please provide a network argument. Eg.: network=fuji");
-    process.exit(0);
+    args.network = "fuji";
   }
 
   const config = getConfig(args?.network);

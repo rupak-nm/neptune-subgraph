@@ -9,6 +9,7 @@ export function loadTransaction(event: ethereum.Event): Transaction {
     transaction = new Transaction(id);
   }
 
+  transaction.transactionHash = event.transaction.hash.toHexString();
   transaction.blockNumber = event.block.number;
   transaction.timestamp = event.block.timestamp;
   transaction.gasPrice = event.transaction.gasPrice;

@@ -127,14 +127,15 @@ export function handleCoverUpdated(event: CoverUpdated): void {
 export function handleCoverUserWhitelistUpdated(
   event: CoverUserWhitelistUpdated
 ): void {
-  let entity = CoverUserWhitelistUpdatedEvent.load(
-    event.transaction.hash.toHexString()
-  );
+  const id = event.transaction.hash
+    .toHexString()
+    .concat("-")
+    .concat(event.params.account.toHex());
+
+  let entity = CoverUserWhitelistUpdatedEvent.load(id);
 
   if (!entity) {
-    entity = new CoverUserWhitelistUpdatedEvent(
-      event.transaction.hash.toHexString()
-    );
+    entity = new CoverUserWhitelistUpdatedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
@@ -196,10 +197,15 @@ export function handleMinStakeToAddLiquiditySet(
 }
 
 export function handleProductCreated(event: ProductCreated): void {
-  let entity = ProductCreatedEvent.load(event.transaction.hash.toHexString());
+  const id = event.params.coverKey
+    .toHexString()
+    .concat("-")
+    .concat(event.params.productKey.toHexString());
+
+  let entity = ProductCreatedEvent.load(id);
 
   if (!entity) {
-    entity = new ProductCreatedEvent(event.transaction.hash.toHexString());
+    entity = new ProductCreatedEvent(id);
   }
 
   entity.coverKey = event.params.coverKey;
