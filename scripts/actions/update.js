@@ -1,16 +1,15 @@
 const { getParsedArgs } = require("./args");
-const { runCommand } = require("./command");
 const { getConfig } = require("./config");
 const { createManifest } = require("./manifest");
 
 const updateManifestFile = () => {
   const args = getParsedArgs();
 
-  if (!args.network) {
-    args.network = "fuji";
+  if (!args.config) {
+    args.config = "fuji";
   }
 
-  const config = getConfig(args?.network);
+  const config = getConfig(args?.config);
 
   createManifest(config);
 
