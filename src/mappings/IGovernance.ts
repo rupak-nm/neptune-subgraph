@@ -28,14 +28,13 @@ export function handleAttested(event: Attested): void {
     entity = new AttestedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
-  entity.witness = event.params.witness;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
+  entity.witness = event.params.witness.toHexString();
   entity.incidentDate = event.params.incidentDate;
   entity.stake = event.params.stake;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -49,15 +48,14 @@ export function handleDisputed(event: Disputed): void {
     entity = new DisputedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
-  entity.reporter = event.params.reporter;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
+  entity.reporter = event.params.reporter.toHexString();
   entity.incidentDate = event.params.incidentDate;
   entity.info = event.params.info;
   entity.initialStake = event.params.initialStake;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -73,12 +71,11 @@ export function handleFirstReportingStakeSet(
     entity = new FirstReportingStakeSetEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
+  entity.coverKey = event.params.coverKey.toHexString();
   entity.previous = event.params.previous;
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -92,14 +89,13 @@ export function handleRefuted(event: Refuted): void {
     entity = new RefutedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
-  entity.witness = event.params.witness;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
+  entity.witness = event.params.witness.toHexString();
   entity.incidentDate = event.params.incidentDate;
   entity.stake = event.params.stake;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -113,16 +109,15 @@ export function handleReported(event: Reported): void {
     entity = new ReportedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
-  entity.reporter = event.params.reporter;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
+  entity.reporter = event.params.reporter.toHexString();
   entity.incidentDate = event.params.incidentDate;
   entity.info = event.params.info;
   entity.initialStake = event.params.initialStake;
   entity.resolutionTimestamp = event.params.resolutionTimestamp;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -142,7 +137,6 @@ export function handleReporterCommissionSet(
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -160,7 +154,6 @@ export function handleReportingBurnRateSet(event: ReportingBurnRateSet): void {
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();

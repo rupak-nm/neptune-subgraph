@@ -20,14 +20,13 @@ export function handleBlacklistSet(event: BlacklistSet): void {
     entity = new BlacklistSetEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
   entity.incidentDate = event.params.incidentDate;
-  entity.account = event.params.account;
+  entity.account = event.params.account.toHexString();
   entity.status = event.params.status;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -41,12 +40,11 @@ export function handleClaimPeriodSet(event: ClaimPeriodSet): void {
     entity = new ClaimPeriodSetEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
+  entity.coverKey = event.params.coverKey.toHexString();
   entity.previous = event.params.previous;
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -60,19 +58,18 @@ export function handleClaimed(event: Claimed): void {
     entity = new ClaimedEvent(id);
   }
 
-  entity.cxToken = event.params.cxToken;
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
+  entity.cxToken = event.params.cxToken.toHexString();
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
   entity.incidentDate = event.params.incidentDate;
-  entity.account = event.params.account;
-  entity.reporter = event.params.reporter;
+  entity.account = event.params.account.toHexString();
+  entity.reporter = event.params.reporter.toHexString();
   entity.amount = event.params.amount;
   entity.reporterFee = event.params.reporterFee;
   entity.platformFee = event.params.platformFee;
   entity.claimed = event.params.claimed;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();

@@ -112,12 +112,11 @@ export function handleContractAdded(event: ContractAdded): void {
 
   entity.namespace = event.params.namespace.toString();
   entity.key = event.params.key.toString();
-  entity.contractAddress = event.params.contractAddress;
+  entity.contractAddress = event.params.contractAddress.toHexString();
 
   createTemplate(event.params.namespace, event.params.contractAddress);
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -139,13 +138,12 @@ export function handleContractUpgraded(event: ContractUpgraded): void {
 
   entity.namespace = event.params.namespace.toString();
   entity.key = event.params.key.toString();
-  entity.previous = event.params.previous;
-  entity.current = event.params.current;
+  entity.previous = event.params.previous.toHexString();
+  entity.current = event.params.current.toHexString();
 
   createTemplate(event.params.namespace, event.params.current);
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -159,12 +157,12 @@ export function handleInitialized(event: Initialized): void {
     entity = new InitializedEvent(id);
   }
 
-  entity.burner = event.params.args.burner;
-  entity.uniswapV2RouterLike = event.params.args.uniswapV2RouterLike;
-  entity.uniswapV2FactoryLike = event.params.args.uniswapV2FactoryLike;
-  entity.npm = event.params.args.npm;
-  entity.treasury = event.params.args.treasury;
-  entity.priceOracle = event.params.args.priceOracle;
+  entity.burner = event.params.args.burner.toHexString();
+  entity.uniswapV2RouterLike = event.params.args.uniswapV2RouterLike.toHexString();
+  entity.uniswapV2FactoryLike = event.params.args.uniswapV2FactoryLike.toHexString();
+  entity.npm = event.params.args.npm.toHexString();
+  entity.treasury = event.params.args.treasury.toHexString();
+  entity.priceOracle = event.params.args.priceOracle.toHexString();
   entity.coverCreationFee = event.params.args.coverCreationFee;
   entity.minCoverCreationStake = event.params.args.minCoverCreationStake;
   entity.minStakeToAddLiquidity = event.params.args.minStakeToAddLiquidity;
@@ -186,7 +184,6 @@ export function handleInitialized(event: Initialized): void {
   entity.policyCeiling = event.params.args.policyCeiling;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -200,10 +197,9 @@ export function handleMemberAdded(event: MemberAdded): void {
     entity = new MemberAddedEvent(id);
   }
 
-  entity.member = event.params.member;
+  entity.member = event.params.member.toHexString();
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -217,10 +213,9 @@ export function handleMemberRemoved(event: MemberRemoved): void {
     entity = new MemberRemovedEvent(id);
   }
 
-  entity.member = event.params.member;
+  entity.member = event.params.member.toHexString();
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -234,12 +229,11 @@ export function handleRoleAdminChanged(event: RoleAdminChanged): void {
     entity = new RoleAdminChangedEvent(id);
   }
 
-  entity.role = event.params.role;
-  entity.previousAdminRole = event.params.previousAdminRole;
-  entity.newAdminRole = event.params.newAdminRole;
+  entity.role = event.params.role.toHexString();
+  entity.previousAdminRole = event.params.previousAdminRole.toHexString();
+  entity.newAdminRole = event.params.newAdminRole.toHexString();
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -253,12 +247,11 @@ export function handleRoleGranted(event: RoleGranted): void {
     entity = new RoleGrantedEvent(id);
   }
 
-  entity.role = event.params.role;
-  entity.account = event.params.account;
-  entity.sender = event.params.sender;
+  entity.role = event.params.role.toHexString();
+  entity.account = event.params.account.toHexString();
+  entity.sender = event.params.sender.toHexString();
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -272,12 +265,11 @@ export function handleRoleRevoked(event: RoleRevoked): void {
     entity = new RoleRevokedEvent(id);
   }
 
-  entity.role = event.params.role;
-  entity.account = event.params.account;
-  entity.sender = event.params.sender;
+  entity.role = event.params.role.toHexString();
+  entity.account = event.params.account.toHexString();
+  entity.sender = event.params.sender.toHexString();
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();

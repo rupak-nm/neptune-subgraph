@@ -13,12 +13,11 @@ export function handlePausersSet(event: PausersSet): void {
     entity = new PausersSetEvent(id);
   }
 
-  entity.addedBy = event.params.addedBy;
-  entity.accounts = changetype<Bytes[]>(event.params.accounts);
+  entity.addedBy = event.params.addedBy.toHexString();
+  entity.accounts = changetype<string[]>(event.params.accounts);
   entity.statuses = event.params.statuses;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();

@@ -14,7 +14,7 @@ export function loadTransaction(event: ethereum.Event): Transaction {
   transaction.timestamp = event.block.timestamp;
   transaction.gasPrice = event.transaction.gasPrice;
   transaction.gasUsed = event.transaction.gasLimit;
-  transaction.from = event.transaction.from;
+  transaction.from = event.transaction.from.toHexString();
   transaction.to = event.transaction.to;
 
   transaction.save();

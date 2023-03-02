@@ -31,7 +31,6 @@ export function handleLiquidityStateUpdateIntervalSet(
   entity.duration = event.params.duration;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -48,7 +47,6 @@ export function handleMaxLendingRatioSet(event: MaxLendingRatioSet): void {
   entity.ratio = event.params.ratio;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -62,12 +60,11 @@ export function handleRiskPoolingPeriodSet(event: RiskPoolingPeriodSet): void {
     entity = new RiskPoolingPeriodSetEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
+  entity.coverKey = event.params.coverKey.toHexString();
   entity.lendingPeriod = event.params.lendingPeriod;
   entity.withdrawalWindow = event.params.withdrawalWindow;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -81,10 +78,9 @@ export function handleStrategyAdded(event: StrategyAdded): void {
     entity = new StrategyAddedEvent(id);
   }
 
-  entity.strategy = event.params.strategy;
+  entity.strategy = event.params.strategy.toHexString();
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -98,10 +94,9 @@ export function handleStrategyDeleted(event: StrategyDeleted): void {
     entity = new StrategyDeletedEvent(id);
   }
 
-  entity.strategy = event.params.strategy;
+  entity.strategy = event.params.strategy.toHexString();
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -115,10 +110,9 @@ export function handleStrategyDisabled(event: StrategyDisabled): void {
     entity = new StrategyDisabledEvent(id);
   }
 
-  entity.strategy = event.params.strategy;
+  entity.strategy = event.params.strategy.toHexString();
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();

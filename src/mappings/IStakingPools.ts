@@ -25,13 +25,12 @@ export function handleDeposited(event: Deposited): void {
     entity = new DepositedEvent(id);
   }
 
-  entity.key = event.params.key;
-  entity.account = event.params.account;
-  entity.token = event.params.token;
+  entity.key = event.params.key.toHexString();
+  entity.account = event.params.account.toHexString();
+  entity.token = event.params.token.toHexString();
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -45,11 +44,10 @@ export function handlePoolClosed(event: PoolClosed): void {
     entity = new PoolClosedEvent(id);
   }
 
-  entity.key = event.params.key;
+  entity.key = event.params.key.toHexString();
   entity.name = event.params.name;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -63,14 +61,13 @@ export function handlePoolUpdated(event: PoolUpdated): void {
     entity = new PoolUpdatedEvent(id);
   }
 
-  entity.key = event.params.key;
+  entity.key = event.params.key.toHexString();
   entity.name = event.params.args.name;
   entity.poolType = event.params.args.poolType;
-  entity.stakingToken = event.params.args.stakingToken;
-  entity.uniStakingTokenDollarPair =
-    event.params.args.uniStakingTokenDollarPair;
-  entity.rewardToken = event.params.args.rewardToken;
-  entity.uniRewardTokenDollarPair = event.params.args.uniRewardTokenDollarPair;
+  entity.stakingToken = event.params.args.stakingToken.toHexString();
+  entity.uniStakingTokenDollarPair = event.params.args.uniStakingTokenDollarPair.toHexString();
+  entity.rewardToken = event.params.args.rewardToken.toHexString();
+  entity.uniRewardTokenDollarPair = event.params.args.uniRewardTokenDollarPair.toHexString();
   entity.stakingTarget = event.params.args.stakingTarget;
   entity.maxStake = event.params.args.maxStake;
   entity.platformFee = event.params.args.platformFee;
@@ -79,7 +76,6 @@ export function handlePoolUpdated(event: PoolUpdated): void {
   entity.rewardTokenToDeposit = event.params.args.rewardTokenToDeposit;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -94,14 +90,13 @@ export function handleRewardsWithdrawn(event: RewardsWithdrawn): void {
     entity = new RewardsWithdrawnEvent(id);
   }
 
-  entity.key = event.params.key;
-  entity.account = event.params.account;
-  entity.token = event.params.token;
+  entity.key = event.params.key.toHexString();
+  entity.account = event.params.account.toHexString();
+  entity.token = event.params.token.toHexString();
   entity.rewards = event.params.rewards;
   entity.platformFee = event.params.platformFee;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -116,13 +111,12 @@ export function handleWithdrawn(event: Withdrawn): void {
     entity = new WithdrawnEvent(id);
   }
 
-  entity.key = event.params.key;
-  entity.account = event.params.account;
-  entity.token = event.params.token;
+  entity.key = event.params.key.toHexString();
+  entity.account = event.params.account.toHexString();
+  entity.token = event.params.token.toHexString();
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();

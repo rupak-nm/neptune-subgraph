@@ -30,11 +30,10 @@ export function handleCooldownPeriodConfigured(
     entity = new CooldownPeriodConfiguredEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
+  entity.coverKey = event.params.coverKey.toHexString();
   entity.period = event.params.period;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -48,13 +47,12 @@ export function handleFinalized(event: Finalized): void {
     entity = new FinalizedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
-  entity.finalizer = event.params.finalizer;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
+  entity.finalizer = event.params.finalizer.toHexString();
   entity.incidentDate = event.params.incidentDate;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -68,15 +66,14 @@ export function handleGovernanceBurned(event: GovernanceBurned): void {
     entity = new GovernanceBurnedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
-  entity.caller = event.params.caller;
-  entity.burner = event.params.burner;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
+  entity.caller = event.params.caller.toHexString();
+  entity.burner = event.params.burner.toHexString();
   entity.originalReward = event.params.originalReward;
   entity.burnedAmount = event.params.burnedAmount;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -90,13 +87,12 @@ export function handleReportClosed(event: ReportClosed): void {
     entity = new ReportClosedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
-  entity.closedBy = event.params.closedBy;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
+  entity.closedBy = event.params.closedBy.toHexString();
   entity.incidentDate = event.params.incidentDate;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -112,15 +108,14 @@ export function handleReporterRewardDistributed(
     entity = new ReporterRewardDistributedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
-  entity.caller = event.params.caller;
-  entity.reporter = event.params.reporter;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
+  entity.caller = event.params.caller.toHexString();
+  entity.reporter = event.params.reporter.toHexString();
   entity.originalReward = event.params.originalReward;
   entity.reporterReward = event.params.reporterReward;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -134,8 +129,8 @@ export function handleResolved(event: Resolved): void {
     entity = new ResolvedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
   entity.incidentDate = event.params.incidentDate;
   entity.resolutionDeadline = event.params.resolutionDeadline;
   entity.decision = event.params.decision;
@@ -144,7 +139,6 @@ export function handleResolved(event: Resolved): void {
   entity.claimExpiresAt = event.params.claimExpiresAt;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -158,14 +152,13 @@ export function handleUnstaken(event: Unstaken): void {
     entity = new UnstakenEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
-  entity.caller = event.params.caller;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
+  entity.caller = event.params.caller.toHexString();
   entity.originalStake = event.params.originalStake;
   entity.reward = event.params.reward;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();

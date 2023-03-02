@@ -20,11 +20,10 @@ export function handleFeeBurned(event: FeeBurned): void {
     entity = new FeeBurnedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
+  entity.coverKey = event.params.coverKey.toHexString();
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -38,12 +37,11 @@ export function handleStakeAdded(event: StakeAdded): void {
     entity = new StakeAddedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.account = event.params.account;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.account = event.params.account.toHexString();
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -57,12 +55,11 @@ export function handleStakeRemoved(event: StakeRemoved): void {
     entity = new StakeRemovedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.account = event.params.account;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.account = event.params.account.toHexString();
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();

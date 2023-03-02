@@ -18,12 +18,11 @@ export function handleCoverPolicyRateSet(event: CoverPolicyRateSet): void {
     entity = new CoverPolicyRateSetEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
+  entity.coverKey = event.params.coverKey.toHexString();
   entity.floor = event.params.floor;
   entity.ceiling = event.params.ceiling;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -37,11 +36,10 @@ export function handleCoverageLagSet(event: CoverageLagSet): void {
     entity = new CoverageLagSetEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
+  entity.coverKey = event.params.coverKey.toHexString();
   entity.window = event.params.window;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();

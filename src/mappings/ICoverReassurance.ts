@@ -20,13 +20,12 @@ export function handlePoolCapitalized(event: PoolCapitalized): void {
     entity = new PoolCapitalizedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
   entity.incidentDate = event.params.incidentDate;
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -40,12 +39,11 @@ export function handleReassuranceAdded(event: ReassuranceAdded): void {
     entity = new ReassuranceAddedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.onBehalfOf = event.params.onBehalfOf;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.onBehalfOf = event.params.onBehalfOf.toHexString();
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -59,11 +57,10 @@ export function handleWeightSet(event: WeightSet): void {
     entity = new WeightSetEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
+  entity.coverKey = event.params.coverKey.toHexString();
   entity.weight = event.params.weight;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();

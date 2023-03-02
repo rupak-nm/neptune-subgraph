@@ -12,13 +12,12 @@ export function handleVaultDeployed(event: VaultDeployed): void {
     entity = new VaultDeployedEvent(id);
   }
 
-  entity.vault = event.params.vault;
-  entity.coverKey = event.params.coverKey;
+  entity.vault = event.params.vault.toHexString();
+  entity.coverKey = event.params.coverKey.toHexString();
   entity.name = event.params.name;
   entity.symbol = event.params.symbol;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();

@@ -12,15 +12,14 @@ export function handleCxTokenDeployed(event: CxTokenDeployed): void {
     entity = new CxTokenDeployedEvent(id);
   }
 
-  entity.cxToken = event.params.cxToken;
-  entity.store = event.params.store;
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
+  entity.cxToken = event.params.cxToken.toHexString();
+  entity.store = event.params.store.toHexString();
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
   entity.tokenName = event.params.tokenName;
   entity.expiryDate = event.params.expiryDate;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();

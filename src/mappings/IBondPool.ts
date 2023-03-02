@@ -20,11 +20,10 @@ export function handleBondClaimed(event: BondClaimed): void {
     entity = new BondClaimedEvent(id);
   }
 
-  entity.account = event.params.account;
+  entity.account = event.params.account.toHexString();
   entity.amount = event.params.amount;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -38,13 +37,12 @@ export function handleBondCreated(event: BondCreated): void {
     entity = new BondCreatedEvent(id);
   }
 
-  entity.account = event.params.account;
+  entity.account = event.params.account.toHexString();
   entity.lpTokens = event.params.lpTokens;
   entity.npmToVest = event.params.npmToVest;
   entity.unlockDate = event.params.unlockDate;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -58,15 +56,14 @@ export function handleBondPoolSetup(event: BondPoolSetup): void {
     entity = new BondPoolSetupEvent(id);
   }
 
-  entity.lpToken = event.params.args.lpToken;
-  entity.treasury = event.params.args.treasury;
+  entity.lpToken = event.params.args.lpToken.toHexString();
+  entity.treasury = event.params.args.treasury.toHexString();
   entity.bondDiscountRate = event.params.args.bondDiscountRate;
   entity.maxBondAmount = event.params.args.maxBondAmount;
   entity.vestingTerm = event.params.args.vestingTerm;
   entity.npmToTopUpNow = event.params.args.npmToTopUpNow;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();

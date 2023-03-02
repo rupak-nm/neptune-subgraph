@@ -36,7 +36,7 @@ export function handleCoverCreated(event: CoverCreated): void {
     entity = new CoverCreatedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
+  entity.coverKey = event.params.coverKey.toHexString();
   entity.info = event.params.info;
   entity.tokenName = event.params.tokenName;
   entity.tokenSymbol = event.params.tokenSymbol;
@@ -44,7 +44,6 @@ export function handleCoverCreated(event: CoverCreated): void {
   entity.requiresWhitelist = event.params.requiresWhitelist;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -62,7 +61,6 @@ export function handleCoverCreationFeeSet(event: CoverCreationFeeSet): void {
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -78,11 +76,10 @@ export function handleCoverCreatorWhitelistUpdated(
     entity = new CoverCreatorWhitelistUpdatedEvent(id);
   }
 
-  entity.account = event.params.account;
+  entity.account = event.params.account.toHexString();
   entity.status = event.params.status;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -96,11 +93,10 @@ export function handleCoverInitialized(event: CoverInitialized): void {
     entity = new CoverInitializedEvent(id);
   }
 
-  entity.stablecoin = event.params.stablecoin;
-  entity.withName = event.params.withName;
+  entity.stablecoin = event.params.stablecoin.toHexString();
+  entity.withName = event.params.withName.toHexString();
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -114,11 +110,10 @@ export function handleCoverUpdated(event: CoverUpdated): void {
     entity = new CoverUpdatedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
+  entity.coverKey = event.params.coverKey.toHexString();
   entity.info = event.params.info;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -138,13 +133,12 @@ export function handleCoverUserWhitelistUpdated(
     entity = new CoverUserWhitelistUpdatedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
-  entity.account = event.params.account;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
+  entity.account = event.params.account.toHexString();
   entity.status = event.params.status;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -164,7 +158,6 @@ export function handleMinCoverCreationStakeSet(
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -184,7 +177,6 @@ export function handleMinStakeToAddLiquiditySet(
   entity.current = event.params.current;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -202,12 +194,11 @@ export function handleProductCreated(event: ProductCreated): void {
     entity = new ProductCreatedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
   entity.info = event.params.info;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -221,14 +212,13 @@ export function handleProductStateUpdated(event: ProductStateUpdated): void {
     entity = new ProductStateUpdatedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
-  entity.updatedBy = event.params.updatedBy;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
+  entity.updatedBy = event.params.updatedBy.toHexString();
   entity.status = event.params.status;
   entity.reason = event.params.reason;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
@@ -242,12 +232,11 @@ export function handleProductUpdated(event: ProductUpdated): void {
     entity = new ProductUpdatedEvent(id);
   }
 
-  entity.coverKey = event.params.coverKey;
-  entity.productKey = event.params.productKey;
+  entity.coverKey = event.params.coverKey.toHexString();
+  entity.productKey = event.params.productKey.toHexString();
   entity.info = event.params.info;
 
   const tx = loadTransaction(event);
-  entity.createdAtTimestamp = tx.timestamp;
   entity.transaction = tx.id;
 
   entity.save();
