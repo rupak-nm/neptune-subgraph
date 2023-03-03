@@ -48,11 +48,11 @@ type Transaction @entity {
   feeBurnedEvent: [FeeBurnedEvent!]! @derivedFrom(field: "transaction")
   stakeAddedEvent: [StakeAddedEvent!]! @derivedFrom(field: "transaction")
   stakeRemovedEvent: [StakeRemovedEvent!]! @derivedFrom(field: "transaction")
-  iCxTokenApprovalEvent: [ICxTokenApprovalEvent!]!
+  icxTokenApprovalEvent: [ICxTokenApprovalEvent!]!
     @derivedFrom(field: "transaction")
   coverageStartSetEvent: [CoverageStartSetEvent!]!
     @derivedFrom(field: "transaction")
-  iCxTokenTransferEvent: [ICxTokenTransferEvent!]!
+  icxTokenTransferEvent: [ICxTokenTransferEvent!]!
     @derivedFrom(field: "transaction")
   cxTokenDeployedEvent: [CxTokenDeployedEvent!]!
     @derivedFrom(field: "transaction")
@@ -110,7 +110,7 @@ type Transaction @entity {
     @derivedFrom(field: "transaction")
   withdrawnEvent: [WithdrawnEvent!]! @derivedFrom(field: "transaction")
   pausersSetEvent: [PausersSetEvent!]! @derivedFrom(field: "transaction")
-  iVaultApprovalEvent: [IVaultApprovalEvent!]!
+  ivaultApprovalEvent: [IVaultApprovalEvent!]!
     @derivedFrom(field: "transaction")
   enteredEvent: [EnteredEvent!]! @derivedFrom(field: "transaction")
   exitedEvent: [ExitedEvent!]! @derivedFrom(field: "transaction")
@@ -128,7 +128,7 @@ type Transaction @entity {
     @derivedFrom(field: "transaction")
   strategyTransferEvent: [StrategyTransferEvent!]!
     @derivedFrom(field: "transaction")
-  iVaultTransferEvent: [IVaultTransferEvent!]!
+  ivaultTransferEvent: [IVaultTransferEvent!]!
     @derivedFrom(field: "transaction")
   vaultDeployedEvent: [VaultDeployedEvent!]! @derivedFrom(field: "transaction")
 }
@@ -981,4 +981,72 @@ type ICxTokenTransferEvent @entity {
   value: BigInt!
 
   transaction: Transaction!
+}
+
+type IBondPoolInstance @entity {
+  id: ID!
+}
+
+type IClaimsProcessorInstance @entity {
+  id: ID!
+}
+
+type ICoverInstance @entity {
+  id: ID!
+}
+
+type ICoverReassuranceInstance @entity {
+  id: ID!
+}
+
+type ICoverStakeInstance @entity {
+  id: ID!
+}
+
+type ICxTokenInstance @entity {
+  id: ID!
+}
+
+type ICxTokenFactoryInstance @entity {
+  id: ID!
+}
+
+type IGovernanceInstance @entity {
+  id: ID!
+}
+
+type ILiquidityEngineInstance @entity {
+  id: ID!
+}
+
+type IPolicyInstance @entity {
+  id: ID!
+}
+
+type IPolicyAdminInstance @entity {
+  id: ID!
+}
+
+type IResolutionInstance @entity {
+  id: ID!
+}
+
+type IStakingPoolsInstance @entity {
+  id: ID!
+}
+
+type IStoreInstance @entity {
+  id: ID!
+}
+
+type IVaultInstance @entity {
+  id: ID!
+}
+
+type IVaultDelegateInstance @entity {
+  id: ID!
+}
+
+type IVaultFactoryInstance @entity {
+  id: ID!
 }

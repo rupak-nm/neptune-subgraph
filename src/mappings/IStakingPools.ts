@@ -17,7 +17,7 @@ import {
 import { createEventID } from "../initializers/EventId";
 
 export function handleDeposited(event: Deposited): void {
-  const id = createEventID(event).concat("-deposit");
+  const id = createEventID(event);
 
   let entity = DepositedEvent.load(id);
 
@@ -82,7 +82,7 @@ export function handlePoolUpdated(event: PoolUpdated): void {
 }
 
 export function handleRewardsWithdrawn(event: RewardsWithdrawn): void {
-  const id = createEventID(event).concat("-rewards-withdrawal");
+  const id = createEventID(event);
 
   let entity = RewardsWithdrawnEvent.load(id);
 
@@ -103,7 +103,7 @@ export function handleRewardsWithdrawn(event: RewardsWithdrawn): void {
 }
 
 export function handleWithdrawn(event: Withdrawn): void {
-  const id = createEventID(event).concat("-withdrawal");
+  const id = createEventID(event);
 
   let entity = WithdrawnEvent.load(id);
 

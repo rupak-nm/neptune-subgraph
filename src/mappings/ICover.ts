@@ -183,10 +183,7 @@ export function handleMinStakeToAddLiquiditySet(
 }
 
 export function handleProductCreated(event: ProductCreated): void {
-  const id = event.params.coverKey
-    .toHexString()
-    .concat("-")
-    .concat(event.params.productKey.toHexString());
+  const id = createEventID(event);
 
   let entity = ProductCreatedEvent.load(id);
 
