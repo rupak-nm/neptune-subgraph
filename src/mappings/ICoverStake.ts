@@ -25,6 +25,7 @@ export function handleFeeBurned(event: FeeBurned): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -43,6 +44,7 @@ export function handleStakeAdded(event: StakeAdded): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -61,6 +63,7 @@ export function handleStakeRemoved(event: StakeRemoved): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

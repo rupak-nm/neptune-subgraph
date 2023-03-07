@@ -1,16 +1,11 @@
 type Transaction @entity {
-  # txn hash
   id: ID!
-
-  # block txn was included in
   transactionHash: String!
   blockNumber: BigInt!
-
-  # timestamp txn was confirmed
   timestamp: BigInt!
-  gasPrice: BigInt!
+  gasPrice: BigInt
   gasUsed: BigInt!
-  from: String! # address
+  from: String
   to: Bytes
 
   bondClaimedEvent: [BondClaimedEvent!]! @derivedFrom(field: "transaction")
@@ -48,11 +43,7 @@ type Transaction @entity {
   feeBurnedEvent: [FeeBurnedEvent!]! @derivedFrom(field: "transaction")
   stakeAddedEvent: [StakeAddedEvent!]! @derivedFrom(field: "transaction")
   stakeRemovedEvent: [StakeRemovedEvent!]! @derivedFrom(field: "transaction")
-  icxTokenApprovalEvent: [ICxTokenApprovalEvent!]!
-    @derivedFrom(field: "transaction")
   coverageStartSetEvent: [CoverageStartSetEvent!]!
-    @derivedFrom(field: "transaction")
-  icxTokenTransferEvent: [ICxTokenTransferEvent!]!
     @derivedFrom(field: "transaction")
   cxTokenDeployedEvent: [CxTokenDeployedEvent!]!
     @derivedFrom(field: "transaction")
@@ -110,8 +101,6 @@ type Transaction @entity {
     @derivedFrom(field: "transaction")
   withdrawnEvent: [WithdrawnEvent!]! @derivedFrom(field: "transaction")
   pausersSetEvent: [PausersSetEvent!]! @derivedFrom(field: "transaction")
-  ivaultApprovalEvent: [IVaultApprovalEvent!]!
-    @derivedFrom(field: "transaction")
   enteredEvent: [EnteredEvent!]! @derivedFrom(field: "transaction")
   exitedEvent: [ExitedEvent!]! @derivedFrom(field: "transaction")
   flashLoanBorrowedEvent: [FlashLoanBorrowedEvent!]!
@@ -128,35 +117,31 @@ type Transaction @entity {
     @derivedFrom(field: "transaction")
   strategyTransferEvent: [StrategyTransferEvent!]!
     @derivedFrom(field: "transaction")
-  ivaultTransferEvent: [IVaultTransferEvent!]!
-    @derivedFrom(field: "transaction")
   vaultDeployedEvent: [VaultDeployedEvent!]! @derivedFrom(field: "transaction")
 }
 
 type BondClaimedEvent @entity {
   id: ID!
-
   account: String!
   amount: BigInt!
 
-  # creation stats
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type BondCreatedEvent @entity {
   id: ID!
-
   account: String!
   lpTokens: BigInt!
   npmToVest: BigInt!
   unlockDate: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type BondPoolSetupEvent @entity {
   id: ID!
-
   lpToken: String!
   treasury: String!
   bondDiscountRate: BigInt!
@@ -164,34 +149,34 @@ type BondPoolSetupEvent @entity {
   vestingTerm: BigInt!
   npmToTopUpNow: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type BlacklistSetEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   incidentDate: BigInt!
   account: String!
   status: Boolean!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ClaimPeriodSetEvent @entity {
   id: ID!
-
   coverKey: String!
   previous: BigInt!
   current: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ClaimedEvent @entity {
   id: ID!
-
   cxToken: String!
   coverKey: String!
   productKey: String!
@@ -203,12 +188,12 @@ type ClaimedEvent @entity {
   platformFee: BigInt!
   claimed: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type CoverCreatedEvent @entity {
   id: ID!
-
   coverKey: String!
   info: String!
   tokenName: String!
@@ -216,168 +201,181 @@ type CoverCreatedEvent @entity {
   supportsProducts: Boolean!
   requiresWhitelist: Boolean!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type CoverCreationFeeSetEvent @entity {
   id: ID!
-
   previous: BigInt!
   current: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type CoverCreatorWhitelistUpdatedEvent @entity {
   id: ID!
-
   account: String!
   status: Boolean!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type CoverInitializedEvent @entity {
   id: ID!
-
   stablecoin: String!
   withName: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type CoverUpdatedEvent @entity {
   id: ID!
-
   coverKey: String!
   info: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type CoverUserWhitelistUpdatedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   account: String!
   status: Boolean!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type MinCoverCreationStakeSetEvent @entity {
   id: ID!
-
   previous: BigInt!
   current: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type MinStakeToAddLiquiditySetEvent @entity {
   id: ID!
-
   previous: BigInt!
   current: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ProductCreatedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   info: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ProductStateUpdatedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   updatedBy: String!
   status: Boolean!
   reason: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ProductUpdatedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   info: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type PoolCapitalizedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   incidentDate: BigInt!
   amount: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ReassuranceAddedEvent @entity {
   id: ID!
-
   coverKey: String!
   onBehalfOf: String!
   amount: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type WeightSetEvent @entity {
   id: ID!
-
   coverKey: String!
   weight: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type FeeBurnedEvent @entity {
   id: ID!
-
   coverKey: String!
   amount: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type StakeAddedEvent @entity {
   id: ID!
-
   coverKey: String!
   account: String!
   amount: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type StakeRemovedEvent @entity {
   id: ID!
-
   coverKey: String!
   account: String!
   amount: BigInt!
 
+  createdAtTimestamp: BigInt!
+  transaction: Transaction!
+}
+
+type CoverageStartSetEvent @entity {
+  id: ID!
+  policyId: BigInt!
+  coverKey: String!
+  productKey: String!
+  account: String!
+  effectiveFrom: BigInt!
+  amount: BigInt!
+
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type CxTokenDeployedEvent @entity {
   id: ID!
-
   cxToken: String!
   store: String!
   coverKey: String!
@@ -385,24 +383,24 @@ type CxTokenDeployedEvent @entity {
   tokenName: String!
   expiryDate: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type AttestedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   witness: String!
   incidentDate: BigInt!
   stake: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type DisputedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   reporter: String!
@@ -410,34 +408,34 @@ type DisputedEvent @entity {
   info: String!
   initialStake: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type FirstReportingStakeSetEvent @entity {
   id: ID!
-
   coverKey: String!
   previous: BigInt!
   current: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type RefutedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   witness: String!
   incidentDate: BigInt!
   stake: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ReportedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   reporter: String!
@@ -446,80 +444,80 @@ type ReportedEvent @entity {
   initialStake: BigInt!
   resolutionTimestamp: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ReporterCommissionSetEvent @entity {
   id: ID!
-
   previous: BigInt!
   current: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ReportingBurnRateSetEvent @entity {
   id: ID!
-
   previous: BigInt!
   current: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type LiquidityStateUpdateIntervalSetEvent @entity {
   id: ID!
-
   duration: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type MaxLendingRatioSetEvent @entity {
   id: ID!
-
   ratio: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type RiskPoolingPeriodSetEvent @entity {
   id: ID!
-
   coverKey: String!
   lendingPeriod: BigInt!
   withdrawalWindow: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type StrategyAddedEvent @entity {
   id: ID!
-
   strategy: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type StrategyDeletedEvent @entity {
   id: ID!
-
   strategy: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type StrategyDisabledEvent @entity {
   id: ID!
-
   strategy: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type CoverPurchasedEvent @entity {
   id: ID!
-
   onBehalfOf: String!
   coverKey: String!
   productKey: String!
@@ -532,52 +530,52 @@ type CoverPurchasedEvent @entity {
   expiresOn: BigInt!
   policyId: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type CoverPolicyRateSetEvent @entity {
   id: ID!
-
   coverKey: String!
   floor: BigInt!
   ceiling: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type CoverageLagSetEvent @entity {
   id: ID!
-
   coverKey: String!
   window: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ContractAddedEvent @entity {
   id: ID!
-
   namespace: String!
   key: String!
   contractAddress: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ContractUpgradedEvent @entity {
   id: ID!
-
   namespace: String!
   key: String!
   previous: String!
   current: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type InitializedEvent @entity {
   id: ID!
-
   burner: String!
   uniswapV2RouterLike: String!
   uniswapV2FactoryLike: String!
@@ -603,78 +601,78 @@ type InitializedEvent @entity {
   policyFloor: BigInt!
   policyCeiling: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type MemberAddedEvent @entity {
   id: ID!
-
   member: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type MemberRemovedEvent @entity {
   id: ID!
-
   member: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type RoleAdminChangedEvent @entity {
   id: ID!
-
   role: String!
   previousAdminRole: String!
   newAdminRole: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type RoleGrantedEvent @entity {
   id: ID!
-
   role: String!
   account: String!
   sender: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type RoleRevokedEvent @entity {
   id: ID!
-
   role: String!
   account: String!
   sender: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type CooldownPeriodConfiguredEvent @entity {
   id: ID!
-
   coverKey: String!
   period: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type FinalizedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   finalizer: String!
   incidentDate: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type GovernanceBurnedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   caller: String!
@@ -682,23 +680,23 @@ type GovernanceBurnedEvent @entity {
   originalReward: BigInt!
   burnedAmount: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ReportClosedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   closedBy: String!
   incidentDate: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ReporterRewardDistributedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   caller: String!
@@ -706,12 +704,12 @@ type ReporterRewardDistributedEvent @entity {
   originalReward: BigInt!
   reporterReward: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ResolvedEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   incidentDate: BigInt!
@@ -721,47 +719,47 @@ type ResolvedEvent @entity {
   claimBeginsFrom: BigInt!
   claimExpiresAt: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type UnstakenEvent @entity {
   id: ID!
-
   coverKey: String!
   productKey: String!
   caller: String!
   originalStake: BigInt!
   reward: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type DepositedEvent @entity {
   id: ID!
-
   key: String!
   account: String!
   token: String!
   amount: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type PoolClosedEvent @entity {
   id: ID!
-
   key: String!
   name: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type PoolUpdatedEvent @entity {
   id: ID!
-
   key: String!
   name: String!
-  poolType: Int!
+  poolType: BigInt!
   stakingToken: String!
   uniStakingTokenDollarPair: String!
   rewardToken: String!
@@ -773,141 +771,131 @@ type PoolUpdatedEvent @entity {
   lockupPeriod: BigInt!
   rewardTokenToDeposit: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type RewardsWithdrawnEvent @entity {
   id: ID!
-
   key: String!
   account: String!
   token: String!
   rewards: BigInt!
   platformFee: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type WithdrawnEvent @entity {
   id: ID!
-
   key: String!
   account: String!
   token: String!
   amount: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type PausersSetEvent @entity {
   id: ID!
-
   addedBy: String!
   accounts: [String!]!
   statuses: [Boolean!]!
 
-  transaction: Transaction!
-}
-
-type IVaultApprovalEvent @entity {
-  id: ID!
-
-  owner: String!
-  spender: String!
-  value: BigInt!
-
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type EnteredEvent @entity {
   id: ID!
-
   coverKey: String!
   account: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type ExitedEvent @entity {
   id: ID!
-
   coverKey: String!
   account: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type FlashLoanBorrowedEvent @entity {
   id: ID!
-
   lender: String!
   borrower: String!
   stablecoin: String!
   amount: BigInt!
   fee: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type GovernanceTransferEvent @entity {
   id: ID!
-
   to: String!
   amount: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type InterestAccruedEvent @entity {
   id: ID!
-
   coverKey: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type NpmStakenEvent @entity {
   id: ID!
-
   account: String!
   amount: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type NpmUnstakenEvent @entity {
   id: ID!
-
   account: String!
   amount: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type PodsIssuedEvent @entity {
   id: ID!
-
   account: String!
   issued: BigInt!
   liquidityAdded: BigInt!
   referralCode: String!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type PodsRedeemedEvent @entity {
   id: ID!
-
   account: String!
   redeemed: BigInt!
   liquidityReleased: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type StrategyReceiptEvent @entity {
   id: ID!
-
   token: String!
   strategy: String!
   name: String!
@@ -915,71 +903,29 @@ type StrategyReceiptEvent @entity {
   income: BigInt!
   loss: BigInt!
 
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type StrategyTransferEvent @entity {
   id: ID!
-
   token: String!
   strategy: String!
   name: String!
   amount: BigInt!
 
-  transaction: Transaction!
-}
-
-type IVaultTransferEvent @entity {
-  id: ID!
-
-  from: String!
-  to: String!
-  value: BigInt!
-
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 
 type VaultDeployedEvent @entity {
   id: ID!
-
   vault: String!
   coverKey: String!
   name: String!
   symbol: String!
 
-  transaction: Transaction!
-}
-
-type ICxTokenApprovalEvent @entity {
-  id: ID!
-
-  owner: String!
-  spender: String!
-  value: BigInt!
-
-  transaction: Transaction!
-}
-
-type CoverageStartSetEvent @entity {
-  id: ID!
-
-  policyId: BigInt!
-  coverKey: String!
-  productKey: String!
-  account: String!
-  effectiveFrom: BigInt!
-  amount: BigInt!
-
-  transaction: Transaction!
-}
-
-type ICxTokenTransferEvent @entity {
-  id: ID!
-
-  from: String!
-  to: String!
-  value: BigInt!
-
+  createdAtTimestamp: BigInt!
   transaction: Transaction!
 }
 

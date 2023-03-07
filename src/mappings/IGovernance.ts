@@ -36,6 +36,7 @@ export function handleAttested(event: Attested): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -57,6 +58,7 @@ export function handleDisputed(event: Disputed): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -77,6 +79,7 @@ export function handleFirstReportingStakeSet(
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -97,6 +100,7 @@ export function handleRefuted(event: Refuted): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -119,6 +123,7 @@ export function handleReported(event: Reported): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -138,6 +143,7 @@ export function handleReporterCommissionSet(
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -155,6 +161,7 @@ export function handleReportingBurnRateSet(event: ReportingBurnRateSet): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

@@ -26,6 +26,7 @@ export function handleCoverPurchased(event: CoverPurchased): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

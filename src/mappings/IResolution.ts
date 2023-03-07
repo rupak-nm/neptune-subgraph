@@ -35,6 +35,7 @@ export function handleCooldownPeriodConfigured(
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -54,6 +55,7 @@ export function handleFinalized(event: Finalized): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -75,6 +77,7 @@ export function handleGovernanceBurned(event: GovernanceBurned): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -94,6 +97,7 @@ export function handleReportClosed(event: ReportClosed): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -117,6 +121,7 @@ export function handleReporterRewardDistributed(
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -140,6 +145,7 @@ export function handleResolved(event: Resolved): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -160,6 +166,7 @@ export function handleUnstaken(event: Unstaken): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

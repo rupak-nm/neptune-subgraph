@@ -28,6 +28,7 @@ export function handleBlacklistSet(event: BlacklistSet): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -46,6 +47,7 @@ export function handleClaimPeriodSet(event: ClaimPeriodSet): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -71,6 +73,7 @@ export function handleClaimed(event: Claimed): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

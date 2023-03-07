@@ -113,6 +113,7 @@ export function handleContractAdded(event: ContractAdded): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -135,6 +136,7 @@ export function handleContractUpgraded(event: ContractUpgraded): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -175,6 +177,7 @@ export function handleInitialized(event: Initialized): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -191,6 +194,7 @@ export function handleMemberAdded(event: MemberAdded): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -207,6 +211,7 @@ export function handleMemberRemoved(event: MemberRemoved): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -225,6 +230,7 @@ export function handleRoleAdminChanged(event: RoleAdminChanged): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -243,6 +249,7 @@ export function handleRoleGranted(event: RoleGranted): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -261,6 +268,7 @@ export function handleRoleRevoked(event: RoleRevoked): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

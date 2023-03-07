@@ -21,6 +21,7 @@ export function handleCxTokenDeployed(event: CxTokenDeployed): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

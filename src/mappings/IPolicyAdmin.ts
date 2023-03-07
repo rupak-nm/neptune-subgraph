@@ -24,6 +24,7 @@ export function handleCoverPolicyRateSet(event: CoverPolicyRateSet): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -41,6 +42,7 @@ export function handleCoverageLagSet(event: CoverageLagSet): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

@@ -32,6 +32,7 @@ export function handleLiquidityStateUpdateIntervalSet(
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -48,6 +49,7 @@ export function handleMaxLendingRatioSet(event: MaxLendingRatioSet): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -66,6 +68,7 @@ export function handleRiskPoolingPeriodSet(event: RiskPoolingPeriodSet): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -82,6 +85,7 @@ export function handleStrategyAdded(event: StrategyAdded): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -98,6 +102,7 @@ export function handleStrategyDeleted(event: StrategyDeleted): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -114,6 +119,7 @@ export function handleStrategyDisabled(event: StrategyDisabled): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

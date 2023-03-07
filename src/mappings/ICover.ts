@@ -45,6 +45,7 @@ export function handleCoverCreated(event: CoverCreated): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -62,6 +63,7 @@ export function handleCoverCreationFeeSet(event: CoverCreationFeeSet): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -81,6 +83,7 @@ export function handleCoverCreatorWhitelistUpdated(
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -98,6 +101,7 @@ export function handleCoverInitialized(event: CoverInitialized): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -115,6 +119,7 @@ export function handleCoverUpdated(event: CoverUpdated): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -140,6 +145,7 @@ export function handleCoverUserWhitelistUpdated(
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -159,6 +165,7 @@ export function handleMinCoverCreationStakeSet(
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -178,6 +185,7 @@ export function handleMinStakeToAddLiquiditySet(
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -197,6 +205,7 @@ export function handleProductCreated(event: ProductCreated): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -217,6 +226,7 @@ export function handleProductStateUpdated(event: ProductStateUpdated): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -235,6 +245,7 @@ export function handleProductUpdated(event: ProductUpdated): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

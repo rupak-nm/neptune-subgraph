@@ -27,6 +27,7 @@ export function handlePoolCapitalized(event: PoolCapitalized): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -45,6 +46,7 @@ export function handleReassuranceAdded(event: ReassuranceAdded): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -62,6 +64,7 @@ export function handleWeightSet(event: WeightSet): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

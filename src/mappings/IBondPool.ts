@@ -25,6 +25,7 @@ export function handleBondClaimed(event: BondClaimed): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -44,6 +45,7 @@ export function handleBondCreated(event: BondCreated): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -65,6 +67,7 @@ export function handleBondPoolSetup(event: BondPoolSetup): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

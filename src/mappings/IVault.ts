@@ -16,7 +16,6 @@ import {
   Transfer,
 } from "../../generated/templates/IVault/IVault";
 import {
-  IVaultApprovalEvent,
   EnteredEvent,
   ExitedEvent,
   FlashLoanBorrowedEvent,
@@ -28,27 +27,8 @@ import {
   PodsRedeemedEvent,
   StrategyReceiptEvent,
   StrategyTransferEvent,
-  IVaultTransferEvent,
 } from "../../generated/schema";
 import { createEventID } from "../initializers/EventId";
-
-export function handleApproval(event: Approval): void {
-  const id = createEventID(event);
-  let entity = IVaultApprovalEvent.load(id);
-
-  if (!entity) {
-    entity = new IVaultApprovalEvent(id);
-  }
-
-  entity.owner = event.params.owner.toHexString();
-  entity.spender = event.params.spender.toHexString();
-  entity.value = event.params.value;
-
-  const tx = loadTransaction(event);
-  entity.transaction = tx.id;
-
-  entity.save();
-}
 
 export function handleEntered(event: Entered): void {
   const id = createEventID(event);
@@ -63,6 +43,7 @@ export function handleEntered(event: Entered): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -80,6 +61,7 @@ export function handleExited(event: Exited): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -100,6 +82,7 @@ export function handleFlashLoanBorrowed(event: FlashLoanBorrowed): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -117,6 +100,7 @@ export function handleGovernanceTransfer(event: GovernanceTransfer): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -133,6 +117,7 @@ export function handleInterestAccrued(event: InterestAccrued): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -150,6 +135,7 @@ export function handleNpmStaken(event: NpmStaken): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -167,6 +153,7 @@ export function handleNpmUnstaken(event: NpmUnstaken): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -186,6 +173,7 @@ export function handlePodsIssued(event: PodsIssued): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -204,6 +192,7 @@ export function handlePodsRedeemed(event: PodsRedeemed): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -225,6 +214,7 @@ export function handleStrategyReceipt(event: StrategyReceipt): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -244,24 +234,7 @@ export function handleStrategyTransfer(event: StrategyTransfer): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
-
-  entity.save();
-}
-
-export function handleTransfer(event: Transfer): void {
-  const id = createEventID(event);
-  let entity = IVaultTransferEvent.load(id);
-
-  if (!entity) {
-    entity = new IVaultTransferEvent(id);
-  }
-
-  entity.from = event.params.from.toHexString();
-  entity.to = event.params.to.toHexString();
-  entity.value = event.params.value;
-
-  const tx = loadTransaction(event);
-  entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

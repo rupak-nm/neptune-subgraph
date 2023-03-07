@@ -15,6 +15,7 @@ import {
   WithdrawnEvent,
 } from "../../generated/schema";
 import { createEventID } from "../initializers/EventId";
+import { BigInt } from "@graphprotocol/graph-ts";
 
 export function handleDeposited(event: Deposited): void {
   const id = createEventID(event);
@@ -32,6 +33,7 @@ export function handleDeposited(event: Deposited): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -49,6 +51,7 @@ export function handlePoolClosed(event: PoolClosed): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -63,7 +66,7 @@ export function handlePoolUpdated(event: PoolUpdated): void {
 
   entity.key = event.params.key.toHexString();
   entity.name = event.params.args.name;
-  entity.poolType = event.params.args.poolType;
+  entity.poolType = new BigInt(event.params.args.poolType);
   entity.stakingToken = event.params.args.stakingToken.toHexString();
   entity.uniStakingTokenDollarPair = event.params.args.uniStakingTokenDollarPair.toHexString();
   entity.rewardToken = event.params.args.rewardToken.toHexString();
@@ -77,6 +80,7 @@ export function handlePoolUpdated(event: PoolUpdated): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -98,6 +102,7 @@ export function handleRewardsWithdrawn(event: RewardsWithdrawn): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
@@ -118,6 +123,7 @@ export function handleWithdrawn(event: Withdrawn): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }

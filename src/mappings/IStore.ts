@@ -19,6 +19,7 @@ export function handlePausersSet(event: PausersSet): void {
 
   const tx = loadTransaction(event);
   entity.transaction = tx.id;
+  entity.createdAtTimestamp = tx.timestamp;
 
   entity.save();
 }
