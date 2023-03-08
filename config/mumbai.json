@@ -1,0 +1,7 @@
+{
+  "ProtocolAddress": "0xA78ea8D41d29C99e623831B1bA8C37C82df78D67",
+  "StartBlock": "32820561",
+  "Network": "mumbai",
+
+  "deployAccount": "rupak-nm/neptune-subgraph-mumbai"
+}

@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: IProtocol
-    network: fuji
+    network: mumbai
     source:
-      address: "0x023AE81A423486491cF08BdCe9B848EdD7a19F7D"
+      address: "0xA78ea8D41d29C99e623831B1bA8C37C82df78D67"
       abi: IProtocol
-      startBlock: 15607527
+      startBlock: 32820561
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -40,7 +40,7 @@ dataSources:
 templates:
   - kind: ethereum
     name: IBondPool
-    network: fuji
+    network: mumbai
     source:
       abi: IBondPool
     mapping:
@@ -62,7 +62,7 @@ templates:
           handler: handleBondPoolSetup
   - kind: ethereum
     name: IClaimsProcessor
-    network: fuji
+    network: mumbai
     source:
       abi: IClaimsProcessor
     mapping:
@@ -84,7 +84,7 @@ templates:
           handler: handleClaimed
   - kind: ethereum
     name: ICover
-    network: fuji
+    network: mumbai
     source:
       abi: ICover
     mapping:
@@ -122,7 +122,7 @@ templates:
           handler: handleProductUpdated
   - kind: ethereum
     name: IPolicy
-    network: fuji
+    network: mumbai
     source:
       abi: IPolicy
     mapping:
@@ -141,7 +141,7 @@ templates:
 
   - kind: ethereum
     name: ICoverReassurance
-    network: fuji
+    network: mumbai
     source:
       abi: ICoverReassurance
     mapping:
@@ -163,7 +163,7 @@ templates:
           handler: handleWeightSet
   - kind: ethereum
     name: ICoverStake
-    network: fuji
+    network: mumbai
     source:
       abi: ICoverStake
     mapping:
@@ -185,7 +185,7 @@ templates:
           handler: handleStakeRemoved
   - kind: ethereum
     name: ICxTokenFactory
-    network: fuji
+    network: mumbai
     source:
       abi: ICxTokenFactory
     mapping:
@@ -203,7 +203,7 @@ templates:
           handler: handleCxTokenDeployed
   - kind: ethereum
     name: IGovernance
-    network: fuji
+    network: mumbai
     source:
       abi: IGovernance
     mapping:
@@ -233,7 +233,7 @@ templates:
           handler: handleReportingBurnRateSet
   - kind: ethereum
     name: ILiquidityEngine
-    network: fuji
+    network: mumbai
     source:
       abi: ILiquidityEngine
     mapping:
@@ -261,7 +261,7 @@ templates:
           handler: handleStrategyDisabled
   - kind: ethereum
     name: IPolicyAdmin
-    network: fuji
+    network: mumbai
     source:
       abi: IPolicyAdmin
     mapping:
@@ -281,7 +281,7 @@ templates:
           handler: handleCoverageLagSet
   - kind: ethereum
     name: IResolution
-    network: fuji
+    network: mumbai
     source:
       abi: IResolution
     mapping:
@@ -311,7 +311,7 @@ templates:
           handler: handleUnstaken
   - kind: ethereum
     name: IStakingPools
-    network: fuji
+    network: mumbai
     source:
       abi: IStakingPools
     mapping:
@@ -337,7 +337,7 @@ templates:
           handler: handleWithdrawn
   - kind: ethereum
     name: IStore
-    network: fuji
+    network: mumbai
     source:
       abi: IStore
     mapping:
@@ -355,7 +355,7 @@ templates:
           handler: handlePausersSet
   - kind: ethereum
     name: IVault
-    network: fuji
+    network: mumbai
     source:
       abi: IVault
     mapping:
@@ -397,7 +397,7 @@ templates:
           handler: handleTransfer
   - kind: ethereum
     name: IVaultFactory
-    network: fuji
+    network: mumbai
     source:
       abi: IVaultFactory
     mapping:
@@ -415,7 +415,7 @@ templates:
           handler: handleVaultDeployed
   - kind: ethereum
     name: ICxToken
-    network: fuji
+    network: mumbai
     source:
       abi: ICxToken
     mapping:

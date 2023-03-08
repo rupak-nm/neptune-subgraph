@@ -30,6 +30,8 @@ import {
 } from "../../generated/schema";
 import { createEventID } from "../initializers/EventId";
 
+export function handleApproval(event: Approval): void {}
+
 export function handleEntered(event: Entered): void {
   const id = createEventID(event);
   let entity = EnteredEvent.load(id);
@@ -238,3 +240,5 @@ export function handleStrategyTransfer(event: StrategyTransfer): void {
 
   entity.save();
 }
+
+export function handleTransfer(event: Transfer): void {}

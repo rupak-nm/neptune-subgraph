@@ -6,7 +6,7 @@ const updateManifestFile = () => {
   const args = getParsedArgs();
 
   if (!args.config) {
-    args.config = "fuji";
+    args.config = "mumbai";
   }
 
   const config = getConfig(args?.config);

@@ -8,6 +8,8 @@ import {
 import { CoverageStartSetEvent } from "../../generated/schema";
 import { createEventID } from "../initializers/EventId";
 
+export function handleApproval(event: Approval): void {}
+
 export function handleCoverageStartSet(event: CoverageStartSet): void {
   const id = createEventID(event);
   let entity = CoverageStartSetEvent.load(id);
@@ -29,3 +31,5 @@ export function handleCoverageStartSet(event: CoverageStartSet): void {
 
   entity.save();
 }
+
+export function handleTransfer(event: Transfer): void {}
