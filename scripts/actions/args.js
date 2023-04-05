@@ -10,6 +10,8 @@ const getParsedArgs = () => {
     }
   }
 
+  if (args.includes("--studio")) parsedArgs.studio = true;
+
   return parsedArgs;
 };
 
