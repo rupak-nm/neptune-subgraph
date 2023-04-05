@@ -1,7 +1,10 @@
 const { runCommand } = require("./actions/command");
 const { updateManifestFile } = require("./actions/update");
 
-const config = updateManifestFile();
+const { config, studio } = updateManifestFile();
 
-const deployCommand = `graph deploy --node https://api.thegraph.com/deploy/ ${config.deployAccount} subgraph.yaml`;
+const deployCommand = studio
+  ? `graph deploy --node https://api.thegraph.com/deploy/ ${config.deployAccount} subgraph.yaml`
+  : `graph deploy --studio ${config.deployAccount}`;
+
 runCommand(deployCommand);

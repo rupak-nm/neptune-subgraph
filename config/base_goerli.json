@@ -1,0 +1,6 @@
+{
+  "ProtocolAddress": "0x3B60152bFEA33B894e06291aA2bB3404b8dfdC2B",
+  "StartBlock": "2626003",
+  "Network": "base-testnet",
+  "deployAccount": "npm"
+}

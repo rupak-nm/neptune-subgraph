@@ -13,7 +13,7 @@ const updateManifestFile = () => {
 
   createManifest(config);
 
-  return config;
+  return { config, studio };
 };
 
 module.exports = {

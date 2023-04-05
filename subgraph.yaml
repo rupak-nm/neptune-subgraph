@@ -4,11 +4,11 @@ schema:
 dataSources:
   - kind: ethereum
     name: IProtocol
-    network: mumbai
+    network: base-testnet
     source:
-      address: "0xA78ea8D41d29C99e623831B1bA8C37C82df78D67"
+      address: "0x3B60152bFEA33B894e06291aA2bB3404b8dfdC2B"
       abi: IProtocol
-      startBlock: 32820561
+      startBlock: 2626003
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -40,7 +40,7 @@ dataSources:
 templates:
   - kind: ethereum
     name: IBondPool
-    network: mumbai
+    network: base-testnet
     source:
       abi: IBondPool
     mapping:
@@ -62,7 +62,7 @@ templates:
           handler: handleBondPoolSetup
   - kind: ethereum
     name: IClaimsProcessor
-    network: mumbai
+    network: base-testnet
     source:
       abi: IClaimsProcessor
     mapping:
@@ -84,7 +84,7 @@ templates:
           handler: handleClaimed
   - kind: ethereum
     name: ICover
-    network: mumbai
+    network: base-testnet
     source:
       abi: ICover
     mapping:
@@ -122,7 +122,7 @@ templates:
           handler: handleProductUpdated
   - kind: ethereum
     name: IPolicy
-    network: mumbai
+    network: base-testnet
     source:
       abi: IPolicy
     mapping:
@@ -141,7 +141,7 @@ templates:
 
   - kind: ethereum
     name: ICoverReassurance
-    network: mumbai
+    network: base-testnet
     source:
       abi: ICoverReassurance
     mapping:
@@ -163,7 +163,7 @@ templates:
           handler: handleWeightSet
   - kind: ethereum
     name: ICoverStake
-    network: mumbai
+    network: base-testnet
     source:
       abi: ICoverStake
     mapping:
@@ -185,7 +185,7 @@ templates:
           handler: handleStakeRemoved
   - kind: ethereum
     name: ICxTokenFactory
-    network: mumbai
+    network: base-testnet
     source:
       abi: ICxTokenFactory
     mapping:
@@ -203,7 +203,7 @@ templates:
           handler: handleCxTokenDeployed
   - kind: ethereum
     name: IGovernance
-    network: mumbai
+    network: base-testnet
     source:
       abi: IGovernance
     mapping:
@@ -233,7 +233,7 @@ templates:
           handler: handleReportingBurnRateSet
   - kind: ethereum
     name: ILiquidityEngine
-    network: mumbai
+    network: base-testnet
     source:
       abi: ILiquidityEngine
     mapping:
@@ -261,7 +261,7 @@ templates:
           handler: handleStrategyDisabled
   - kind: ethereum
     name: IPolicyAdmin
-    network: mumbai
+    network: base-testnet
     source:
       abi: IPolicyAdmin
     mapping:
@@ -281,7 +281,7 @@ templates:
           handler: handleCoverageLagSet
   - kind: ethereum
     name: IResolution
-    network: mumbai
+    network: base-testnet
     source:
       abi: IResolution
     mapping:
@@ -311,7 +311,7 @@ templates:
           handler: handleUnstaken
   - kind: ethereum
     name: IStakingPools
-    network: mumbai
+    network: base-testnet
     source:
       abi: IStakingPools
     mapping:
@@ -337,7 +337,7 @@ templates:
           handler: handleWithdrawn
   - kind: ethereum
     name: IStore
-    network: mumbai
+    network: base-testnet
     source:
       abi: IStore
     mapping:
@@ -355,7 +355,7 @@ templates:
           handler: handlePausersSet
   - kind: ethereum
     name: IVault
-    network: mumbai
+    network: base-testnet
     source:
       abi: IVault
     mapping:
@@ -397,7 +397,7 @@ templates:
           handler: handleTransfer
   - kind: ethereum
     name: IVaultFactory
-    network: mumbai
+    network: base-testnet
     source:
       abi: IVaultFactory
     mapping:
@@ -415,7 +415,7 @@ templates:
           handler: handleVaultDeployed
   - kind: ethereum
     name: ICxToken
-    network: mumbai
+    network: base-testnet
     source:
       abi: ICxToken
     mapping:
